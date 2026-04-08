@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JKSCR — Importadores de Artículos Ferreteros</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Barlow',sans-serif;background:#0a0f1a;color:#e8e2d5;overflow-x:hidden;}
+:root{--orange:#e8620a;--orange-light:#f4874a;--dark:#0a0f1a;--dark2:#111722;--dark3:#1a2235;--cream:#e8e2d5;--cream2:#b8b2a5;}
+
+nav{background:rgba(10,15,26,0.97);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid rgba(232,98,10,0.2);position:sticky;top:0;z-index:100;}
+.logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:26px;letter-spacing:2px;color:#e8e2d5;}
+.logo span{color:var(--orange);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--cream2);text-decoration:none;font-size:14px;letter-spacing:1px;text-transform:uppercase;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--orange);}
+.nav-cta{background:var(--orange);color:#fff;padding:10px 22px;border-radius:3px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--orange-light);}
+
+.hero{min-height:88vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:4rem 2.5rem;gap:3rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;right:-200px;top:-100px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(232,98,10,0.08) 0%,transparent 70%);pointer-events:none;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(232,98,10,0.12);border:1px solid rgba(232,98,10,0.3);border-radius:30px;padding:6px 16px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem;}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--orange);border-radius:50%;display:block;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(52px,6vw,82px);font-weight:800;line-height:0.92;letter-spacing:-1px;margin-bottom:1.5rem;}
+h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:17px;color:var(--cream2);line-height:1.7;max-width:440px;margin-bottom:2.5rem;font-weight:300;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--orange);color:#fff;padding:14px 32px;border-radius:3px;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:none;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:var(--orange-light);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--cream);padding:14px 32px;border-radius:3px;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:1px solid rgba(232,226,213,0.3);transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-secondary:hover{border-color:var(--cream);background:rgba(232,226,213,0.05);}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(232,226,213,0.1);}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:800;color:var(--orange);}
+.stat-lbl{font-size:12px;color:var(--cream2);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+
+.hero-visual{display:flex;flex-direction:column;gap:1rem;}
+.pipe-card{background:var(--dark3);border:1px solid rgba(232,226,213,0.08);border-radius:6px;padding:1.4rem 1.6rem;display:flex;align-items:center;gap:1.2rem;transition:all 0.3s;cursor:pointer;text-decoration:none;color:inherit;}
+.pipe-card:hover{border-color:rgba(232,98,10,0.4);background:#1f2d44;transform:translateX(6px);}
+.pipe-icon{width:44px;height:44px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pipe-icon svg{width:22px;height:22px;}
+.ic-orange{background:rgba(232,98,10,0.15);}
+.ic-blue{background:rgba(55,138,221,0.15);}
+.ic-green{background:rgba(99,153,34,0.15);}
+.ic-gray{background:rgba(136,135,128,0.15);}
+.pipe-name{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.pipe-desc{font-size:13px;color:var(--cream2);margin-top:2px;}
+.pipe-arrow{margin-left:auto;color:var(--orange);font-size:18px;opacity:0.6;}
+
+.section{padding:5rem 2.5rem;}
+.section-tag{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,4vw,54px);font-weight:800;line-height:0.95;margin-bottom:1rem;}
+.section-sub{font-size:16px;color:var(--cream2);max-width:540px;line-height:1.7;font-weight:300;}
+
+.brands{background:var(--dark2);border-top:1px solid rgba(232,226,213,0.06);border-bottom:1px solid rgba(232,226,213,0.06);}
+.brands-inner{display:flex;align-items:center;gap:0;max-width:1100px;margin:0 auto;}
+.brand-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--cream2);padding:2rem 2.5rem;border-right:1px solid rgba(232,226,213,0.1);white-space:nowrap;flex-shrink:0;}
+.brand-items{display:flex;gap:0;flex:1;}
+.brand-item{flex:1;padding:2rem 2rem;border-right:1px solid rgba(232,226,213,0.08);text-align:center;}
+.brand-item:last-child{border-right:none;}
+.brand-name{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;letter-spacing:3px;}
+.brand-sub{font-size:11px;color:var(--cream2);margin-top:3px;letter-spacing:1px;}
+
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem;}
+.prod-card{background:var(--dark3);border:1px solid rgba(232,226,213,0.08);border-radius:8px;overflow:hidden;transition:all 0.3s;cursor:pointer;text-decoration:none;color:inherit;display:block;}
+.prod-card:hover{border-color:rgba(232,98,10,0.4);transform:translateY(-4px);}
+.prod-thumb{height:160px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.prod-thumb-dwv{background:linear-gradient(135deg,#0a1628 0%,#1a2d4a 100%);}
+.prod-thumb-sch{background:linear-gradient(135deg,#1a1a0a 0%,#2d2a10 100%);}
+.prod-thumb-cpvc{background:linear-gradient(135deg,#1a0a0a 0%,#2d1510 100%);}
+.prod-thumb-cnd{background:linear-gradient(135deg,#0a1a0a 0%,#102d1a 100%);}
+.prod-thumb-tls{background:linear-gradient(135deg,#110a1a 0%,#1e1030 100%);}
+.pipe-svg{width:80px;height:80px;opacity:0.7;}
+.prod-badge{position:absolute;top:12px;right:12px;background:rgba(232,98,10,0.2);border:1px solid rgba(232,98,10,0.4);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--orange);}
+.prod-body{padding:1.4rem;}
+.prod-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+.prod-desc{font-size:13px;color:var(--cream2);line-height:1.6;}
+.prod-link{display:inline-flex;align-items:center;gap:6px;margin-top:1rem;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--orange);text-decoration:none;}
+.prod-link::after{content:'→';}
+
+.why{background:var(--dark2);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem;}
+.why-feat{padding:2rem;border-left:3px solid var(--orange);background:var(--dark3);border-radius:0 6px 6px 0;}
+.why-icon{font-size:28px;margin-bottom:1rem;}
+.why-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;margin-bottom:0.5rem;}
+.why-text{font-size:14px;color:var(--cream2);line-height:1.7;}
+
+.contact-section{background:var(--dark);text-align:center;padding:6rem 2.5rem;}
+.contact-box{max-width:600px;margin:0 auto;}
+.contact-info{display:flex;justify-content:center;gap:3rem;margin-top:3rem;flex-wrap:wrap;}
+.contact-item{text-align:center;}
+.contact-ico{width:48px;height:48px;background:rgba(232,98,10,0.12);border:1px solid rgba(232,98,10,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}
+.contact-lbl{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--cream2);}
+.contact-val{font-size:15px;font-weight:500;margin-top:4px;color:var(--cream);}
+
+footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(232,226,213,0.06);}
+.footer-copy{font-size:13px;color:var(--cream2);}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;padding:3rem 1.5rem;min-height:auto;}
+  .hero-visual{display:none;}
+  nav{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .section{padding:3.5rem 1.5rem;}
+  .why-grid{grid-template-columns:1fr;}
+  .brands-inner{flex-direction:column;}
+  .brand-label{border-right:none;border-bottom:1px solid rgba(232,226,213,0.1);width:100%;text-align:center;}
+  footer{flex-direction:column;gap:1rem;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">JKS<span>CR</span></div>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="mailto:ventas@jkscr.com" class="nav-cta">Contáctenos</a>
+</nav>
+
+<section class="hero" id="inicio">
+  <div>
+    <div class="hero-tag">Importadores Certificados</div>
+    <h1>Tuberías y <em>Ferretería</em> de Alta Calidad</h1>
+    <p class="hero-sub">Importamos y distribuimos sistemas de tubería PVC y herramientas profesionales Tolsen para proyectos residenciales, comerciales e industriales en Costa Rica.</p>
+    <div class="hero-btns">
+      <a href="#productos" class="btn-primary">Ver Productos</a>
+      <a href="mailto:ventas@jkscr.com" class="btn-secondary">Solicitar Cotización</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">JKS</div>
+        <div class="stat-lbl">Marca Propia PVC</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-lbl">Líneas de Producto</div>
+      </div>
+      <div>
+        <div class="stat-num">CR</div>
+        <div class="stat-lbl">100% Nacional</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <a href="https://www.jkscr.com/productos/pvc-jks/dwv" class="pipe-card">
+      <div class="pipe-icon ic-blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#378add" stroke-width="2"><rect x="2" y="9" width="20" height="6" rx="3"/><line x1="8" y1="9" x2="8" y2="15"/><line x1="16" y1="9" x2="16" y2="15"/></svg>
+      </div>
+      <div>
+        <div class="pipe-name">PVC DWV</div>
+        <div class="pipe-desc">Drenaje, desechos y ventilación</div>
+      </div>
+      <div class="pipe-arrow">›</div>
+    </a>
+    <a href="https://www.jkscr.com/productos/pvc-jks/sch40" class="pipe-card">
+      <div class="pipe-icon ic-orange">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#e8620a" stroke-width="2"><rect x="2" y="8" width="20" height="8" rx="2"/><line x1="7" y1="8" x2="7" y2="16"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="17" y1="8" x2="17" y2="16"/></svg>
+      </div>
+      <div>
+        <div class="pipe-name">SCH 40</div>
+        <div class="pipe-desc">Accesorios de presión</div>
+      </div>
+      <div class="pipe-arrow">›</div>
+    </a>
+    <a href="https://www.jkscr.com/productos/pvc-jks/cpvc" class="pipe-card">
+      <div class="pipe-icon ic-green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#639922" stroke-width="2"><path d="M3 12h18M3 8h18M3 16h18" stroke-linecap="round"/><rect x="2" y="6" width="20" height="12" rx="3" fill="none"/></svg>
+      </div>
+      <div>
+        <div class="pipe-name">CPVC</div>
+        <div class="pipe-desc">Alta temperatura y presión</div>
+      </div>
+      <div class="pipe-arrow">›</div>
+    </a>
+    <a href="https://www.jkscr.com/productos/pvc-jks/conduit" class="pipe-card">
+      <div class="pipe-icon ic-gray">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#888780" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M7 7v10M17 7v10" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="pipe-name">CONDUIT Tipo A</div>
+        <div class="pipe-desc">Ductos y accesorios eléctricos</div>
+      </div>
+      <div class="pipe-arrow">›</div>
+    </a>
+  </div>
+</section>
+
+<div class="brands">
+  <div class="brands-inner">
+    <div class="brand-label">Nuestras Marcas</div>
+    <div class="brand-items">
+      <div class="brand-item">
+        <div class="brand-name" style="color:var(--orange);">JKS</div>
+        <div class="brand-sub">Sistemas PVC</div>
+      </div>
+      <div class="brand-item">
+        <div class="brand-name" style="color:#b8b2a5;">TOLSEN</div>
+        <div class="brand-sub">Herramientas</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="productos">
+  <div class="section-tag">Catálogo</div>
+  <h2 class="section-title">Nuestros Productos</h2>
+  <p class="section-sub">Soluciones completas en tubería PVC y herramientas para construcción, plomería y electricidad.</p>
+
+  <div class="products-grid">
+    <a href="https://www.jkscr.com/productos/pvc-jks/dwv" class="prod-card">
+      <div class="prod-thumb prod-thumb-dwv">
+        <svg class="pipe-svg" viewBox="0 0 80 80" fill="none"><rect x="10" y="32" width="60" height="16" rx="8" stroke="#378add" stroke-width="2" fill="rgba(55,138,221,0.1)"/><line x1="25" y1="32" x2="25" y2="48" stroke="#378add" stroke-width="1.5"/><line x1="40" y1="32" x2="40" y2="48" stroke="#378add" stroke-width="1.5"/><line x1="55" y1="32" x2="55" y2="48" stroke="#378add" stroke-width="1.5"/><circle cx="40" cy="40" r="5" fill="#378add" opacity="0.3"/></svg>
+        <div class="prod-badge">DWV</div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Accesorios PVC DWV</div>
+        <div class="prod-desc">Sistemas de drenaje, desechos y ventilación para instalaciones residenciales y comerciales.</div>
+        <span class="prod-link">Ver catálogo</span>
+      </div>
+    </a>
+
+    <a href="https://www.jkscr.com/productos/pvc-jks/sch40" class="prod-card">
+      <div class="prod-thumb prod-thumb-sch">
+        <svg class="pipe-svg" viewBox="0 0 80 80" fill="none"><rect x="5" y="30" width="70" height="20" rx="6" stroke="#e8620a" stroke-width="2.5" fill="rgba(232,98,10,0.1)"/><rect x="12" y="35" width="56" height="10" rx="3" fill="rgba(232,98,10,0.15)"/><line x1="20" y1="30" x2="20" y2="50" stroke="#e8620a" stroke-width="1"/><line x1="40" y1="30" x2="40" y2="50" stroke="#e8620a" stroke-width="1"/><line x1="60" y1="30" x2="60" y2="50" stroke="#e8620a" stroke-width="1"/></svg>
+        <div class="prod-badge">SCH40</div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Accesorios PVC Presión SCH40</div>
+        <div class="prod-desc">Alta resistencia a presión para sistemas de agua potable e industrial.</div>
+        <span class="prod-link">Ver catálogo</span>
+      </div>
+    </a>
+
+    <a href="https://www.jkscr.com/productos/pvc-jks/cpvc" class="prod-card">
+      <div class="prod-thumb prod-thumb-cpvc">
+        <svg class="pipe-svg" viewBox="0 0 80 80" fill="none"><rect x="8" y="28" width="64" height="24" rx="10" stroke="#d85a30" stroke-width="2" fill="rgba(216,90,48,0.1)"/><rect x="15" y="35" width="50" height="10" rx="5" fill="rgba(216,90,48,0.2)"/><circle cx="25" cy="40" r="4" stroke="#d85a30" stroke-width="1.5"/><circle cx="55" cy="40" r="4" stroke="#d85a30" stroke-width="1.5"/></svg>
+        <div class="prod-badge">CPVC</div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Accesorios CPVC</div>
+        <div class="prod-desc">Resistente a altas temperaturas, ideal para agua caliente y aplicaciones exigentes.</div>
+        <span class="prod-link">Ver catálogo</span>
+      </div>
+    </a>
+
+    <a href="https://www.jkscr.com/productos/pvc-jks/conduit" class="prod-card">
+      <div class="prod-thumb prod-thumb-cnd">
+        <svg class="pipe-svg" viewBox="0 0 80 80" fill="none"><rect x="5" y="33" width="70" height="14" rx="4" stroke="#639922" stroke-width="2" fill="rgba(99,153,34,0.1)"/><path d="M15 33v14M25 33v14M35 33v14M45 33v14M55 33v14M65 33v14" stroke="#639922" stroke-width="0.8" opacity="0.6"/><circle cx="10" cy="40" r="3" fill="rgba(99,153,34,0.3)" stroke="#639922" stroke-width="1.5"/><circle cx="70" cy="40" r="3" fill="rgba(99,153,34,0.3)" stroke="#639922" stroke-width="1.5"/></svg>
+        <div class="prod-badge">CONDUIT</div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Tubos Conduit Tipo A</div>
+        <div class="prod-desc">Ductos eléctricos y accesorios para instalaciones eléctricas residenciales e industriales.</div>
+        <span class="prod-link">Ver catálogo</span>
+      </div>
+    </a>
+
+    <a href="https://www.jkscr.com/productos/tolsen" class="prod-card">
+      <div class="prod-thumb prod-thumb-tls">
+        <svg class="pipe-svg" viewBox="0 0 80 80" fill="none"><rect x="30" y="10" width="20" height="40" rx="4" stroke="#7f77dd" stroke-width="2" fill="rgba(127,119,221,0.1)"/><rect x="15" y="50" width="50" height="12" rx="3" stroke="#7f77dd" stroke-width="1.5" fill="rgba(127,119,221,0.08)"/><circle cx="40" cy="30" r="8" stroke="#7f77dd" stroke-width="1.5"/><line x1="40" y1="22" x2="40" y2="38" stroke="#7f77dd" stroke-width="1.5"/><line x1="32" y1="30" x2="48" y2="30" stroke="#7f77dd" stroke-width="1.5"/></svg>
+        <div class="prod-badge" style="color:#7f77dd;background:rgba(127,119,221,0.15);border-color:rgba(127,119,221,0.4);">TOLSEN</div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Herramientas Tolsen</div>
+        <div class="prod-desc">Amplia gama de herramientas manuales y eléctricas de calidad profesional para construcción y ferretería.</div>
+        <span class="prod-link">Ver catálogo</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="section why" id="nosotros">
+  <div class="section-tag">Por Qué Elegirnos</div>
+  <h2 class="section-title">Calidad que Construye Confianza</h2>
+  <div class="why-grid">
+    <div class="why-feat">
+      <div class="why-icon">🏭</div>
+      <div class="why-title">Importadores Directos</div>
+      <div class="why-text">Importamos directamente de fábrica, garantizando los mejores precios y la más alta calidad en cada producto que ofrecemos.</div>
+    </div>
+    <div class="why-feat">
+      <div class="why-icon">✅</div>
+      <div class="why-title">Productos Certificados</div>
+      <div class="why-text">Todos nuestros productos cumplen con los estándares de calidad internacionales exigidos para aplicaciones residenciales e industriales.</div>
+    </div>
+    <div class="why-feat">
+      <div class="why-icon">📦</div>
+      <div class="why-title">Amplio Inventario</div>
+      <div class="why-text">Contamos con stock permanente de tuberías, accesorios y herramientas para atender sus proyectos sin demoras.</div>
+    </div>
+    <div class="why-feat">
+      <div class="why-icon">🤝</div>
+      <div class="why-title">Atención Personalizada</div>
+      <div class="why-text">Nuestro equipo le asesora para encontrar la solución perfecta para cada proyecto, grande o pequeño.</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contacto">
+  <div class="contact-box">
+    <div class="section-tag" style="text-align:center;">Contacto</div>
+    <h2 class="section-title">Estamos Listos para Ayudarle</h2>
+    <p style="color:var(--cream2);font-size:16px;margin-top:1rem;font-weight:300;">Contáctenos para cotizaciones, consultas técnicas o información sobre nuestros productos.</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="contact-lbl">Correo</div>
+        <div class="contact-val">ventas@jkscr.com</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+        </div>
+        <div class="contact-lbl">Teléfono</div>
+        <div class="contact-val">+506 2292-1612</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div class="contact-lbl">Ubicación</div>
+        <div class="contact-val">Costa Rica</div>
+      </div>
+    </div>
+    <a href="mailto:ventas@jkscr.com" class="btn-primary" style="margin-top:2.5rem;font-size:15px;padding:16px 40px;display:inline-block;">Enviar Consulta →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo" style="font-size:18px;">JKS<span>CR</span></div>
+  <div class="footer-copy">© 2025 JKSCR — Importadores de Artículos Ferreteros · Costa Rica</div>
+  <div style="font-size:12px;color:var(--cream2);">ventas@jkscr.com</div>
+</footer>
+
+</body>
+</html>
