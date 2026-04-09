@@ -189,7 +189,7 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <a href="mailto:ventas@jkscr.com" class="nav-cta">Contáctenos</a>
+  <a href="/cdn-cgi/l/email-protection#5c2a3932283d2f1c36372f3f2e723f3331" class="nav-cta" style="display:none;">Contáctenos</a>
 </nav>
 
 <section class="hero" id="inicio">
@@ -352,9 +352,15 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
       <div class="why-text">Contamos con stock permanente de tuberías, accesorios y herramientas para atender sus proyectos sin demoras.</div>
     </div>
     <div class="why-feat">
-      <div class="why-icon">&#x1F91D;</div>
-      <div class="why-title">Atención Personalizada</div>
-      <div class="why-text">Nuestro equipo le asesora para encontrar la solución perfecta para cada proyecto, grande o pequeño.</div>
+      <div class="why-icon">
+        <svg width="36" height="36" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+          <path d="M20 40 C22 30, 30 20, 42 18 C50 16, 58 20, 65 18 C72 16, 78 22, 80 30 C83 38, 78 46, 72 50 C66 54, 60 58, 55 62 C50 66, 44 65, 40 60 C34 54, 28 52, 24 48 C20 44, 19 44, 20 40 Z" fill="#e8620a" opacity="0.85"/>
+          <path d="M35 35 C37 28, 44 24, 52 25 C58 26, 63 31, 64 38 C65 44, 61 50, 55 52 C49 54, 43 51, 39 46 C35 41, 34 38, 35 35 Z" fill="#f4874a" opacity="0.6"/>
+          <circle cx="50" cy="38" r="4" fill="#fff" opacity="0.9"/>
+        </svg>
+      </div>
+      <div class="why-title">Cobertura Nacional</div>
+      <div class="why-text">Distribuimos nuestros productos en todo el territorio costarricense. Desde San José hasta las zonas más remotas del país, garantizamos entregas puntuales y un servicio confiable para que sus proyectos nunca se detengan.</div>
     </div>
   </div>
 </section>
@@ -370,15 +376,9 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
         <div class="contact-lbl">Correo</div>
-        <div class="contact-val">ventas@jkscr.com</div>
+        <div class="contact-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4b2a1aab0a5b784aeafb7a7b6eaa7aba9">[email&#160;protected]</a></div>
       </div>
-      <div class="contact-item">
-        <div class="contact-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
-        </div>
-        <div class="contact-lbl">Teléfono</div>
-        <div class="contact-val">+506 2292-1612</div>
-      </div>
+
       <div class="contact-item">
         <div class="contact-ico">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
@@ -394,10 +394,10 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
 <footer>
   <div class="logo" style="font-size:18px;">JKS<span>CR</span></div>
   <div class="footer-copy">&#x00A9; 2025 JKSCR &mdash; Importadores de Artículos Ferreteros &middot; Costa Rica</div>
-  <div style="font-size:12px;color:var(--cream2);">ventas@jkscr.com</div>
+  <div style="font-size:12px;color:var(--cream2);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e180b001a0f1d2e04051d0d1c400d0103">[email&#160;protected]</a></div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function cerrarModal(){
   document.getElementById('modalCotizacion').classList.remove('active');
   document.getElementById('formContent').style.display='block';
@@ -414,11 +414,3 @@ function enviarFormulario(){
     return;
   }
   var subject=encodeURIComponent('Solicitud de Cotizacion - '+nombre);
-  var body=encodeURIComponent('Nombre: '+nombre+'\nTelefono: '+telefono+'\nTipo de Comprador: '+tipo+'\nProvincia: '+provincia+'\nCorreo: '+correo);
-  window.location.href='mailto:ventas@jkscr.com?subject='+subject+'&body='+body;
-  document.getElementById('formContent').style.display='none';
-  document.getElementById('formSuccess').style.display='block';
-}
-</script>
-</body>
-</html>
