@@ -201,8 +201,8 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
     </div>
   </div>
 
-  <div class="hero-visual">
-    <a href="#" class="pipe-card">
+ <div class="hero-visual">
+    <a href="catalogo.html" class="pipe-card">
       <div class="pipe-icon ic-blue">
         <svg viewBox="0 0 24 24" fill="none" stroke="#378add" stroke-width="2"><rect x="2" y="9" width="20" height="6" rx="3"/><line x1="8" y1="9" x2="8" y2="15"/><line x1="16" y1="9" x2="16" y2="15"/></svg>
       </div>
@@ -212,7 +212,7 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
       </div>
       <div class="pipe-arrow">&#x203A;</div>
     </a>
-    <a href="#" class="pipe-card">
+    <a href="catalogo.html" class="pipe-card">
       <div class="pipe-icon ic-orange">
         <svg viewBox="0 0 24 24" fill="none" stroke="#e8620a" stroke-width="2"><rect x="2" y="8" width="20" height="8" rx="2"/><line x1="7" y1="8" x2="7" y2="16"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="17" y1="8" x2="17" y2="16"/></svg>
       </div>
@@ -222,7 +222,7 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
       </div>
       <div class="pipe-arrow">&#x203A;</div>
     </a>
-    <a href="#" class="pipe-card">
+    <a href="catalogo.html" class="pipe-card">
       <div class="pipe-icon ic-green">
         <svg viewBox="0 0 24 24" fill="none" stroke="#639922" stroke-width="2"><path d="M3 12h18M3 8h18M3 16h18" stroke-linecap="round"/><rect x="2" y="6" width="20" height="12" rx="3" fill="none"/></svg>
       </div>
@@ -232,7 +232,7 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
       </div>
       <div class="pipe-arrow">&#x203A;</div>
     </a>
-    <a href="#" class="pipe-card">
+    <a href="catalogo.html" class="pipe-card">
       <div class="pipe-icon ic-gray">
         <svg viewBox="0 0 24 24" fill="none" stroke="#888780" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M7 7v10M17 7v10" stroke-linecap="round"/></svg>
       </div>
@@ -242,24 +242,6 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
       </div>
       <div class="pipe-arrow">&#x203A;</div>
     </a>
-  </div>
-</section>
-
-<div class="brands">
-  <div class="brands-inner">
-    <div class="brand-label">Nuestras Marcas</div>
-    <div class="brand-items">
-      <div class="brand-item">
-        <img src="omi.png" alt="OMI - Tubos y Soluciones en PVC" style="height:60px;object-fit:contain;max-width:100%;"/>
-      </div>
-      <div class="brand-item">
-        <img src="tolsen.png" alt="Tolsen" style="height:60px;object-fit:contain;max-width:100%;"/>
-      </div>
-      <div class="brand-item">
-        <img src="lesso.png" alt="Lesso" style="height:60px;object-fit:contain;max-width:100%;"/>
-      </div>
-    </div>
-  </div>
 </div>
 
 <section class="section" id="productos">
@@ -277,6 +259,33 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
         <div class="prod-title">Accesorios PVC DWV</div>
         <div class="prod-desc">Sistemas de drenaje, desechos y ventilación para instalaciones residenciales y comerciales.</div>
         <span class="prod-link">Ver catálogo</span>
+<script>
+function cerrarModal(){
+  document.getElementById('modalCotizacion').classList.remove('active');
+  document.getElementById('formContent').style.display='block';
+  document.getElementById('formSuccess').style.display='none';
+}
+
+function enviarFormulario(){
+  var nombre=document.getElementById('f-nombre').value.trim();
+  var telefono=document.getElementById('f-telefono').value.trim();
+  var tipo=document.getElementById('f-tipo').value;
+  var provincia=document.getElementById('f-provincia').value;
+  var correo=document.getElementById('f-correo').value.trim();
+
+  // Validación
+  if(!nombre || !telefono || !tipo || !provincia || !correo){
+    alert('Por favor complete todos los campos.');
+    return;
+  }
+
+  // Éxito
+  document.getElementById('formContent').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+}
+</script>
+</body>
+</html>
       </div>
     </a>
 
