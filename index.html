@@ -48,10 +48,6 @@ h1 em{color:var(--orange);font-style:normal;}
 .form-select option{background:#1a2235;}
 .form-submit{width:100%;background:var(--orange);color:#fff;padding:14px;border-radius:3px;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:none;margin-top:0.5rem;transition:background 0.2s;}
 .form-submit:hover{background:var(--orange-light);}
-.form-success{display:none;text-align:center;padding:2rem 0;}
-.form-success-icon{font-size:52px;margin-bottom:1rem;}
-.form-success-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--orange);margin-bottom:0.5rem;}
-.form-success-text{font-size:14px;color:var(--cream2);}
 
 .hero-visual{display:flex;flex-direction:column;gap:1rem;}
 .pipe-card{background:var(--dark3);border:1px solid rgba(232,226,213,0.08);border-radius:6px;padding:1.4rem 1.6rem;display:flex;align-items:center;gap:1.2rem;transition:all 0.3s;cursor:pointer;text-decoration:none;color:inherit;}
@@ -71,13 +67,6 @@ h1 em{color:var(--orange);font-style:normal;}
 .section-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,4vw,54px);font-weight:800;line-height:0.95;margin-bottom:1rem;}
 .section-sub{font-size:16px;color:var(--cream2);max-width:540px;line-height:1.7;font-weight:300;}
 
-.brands{background:var(--dark2);border-top:1px solid rgba(232,226,213,0.06);border-bottom:1px solid rgba(232,226,213,0.06);}
-.brands-inner{display:flex;align-items:center;max-width:1100px;margin:0 auto;}
-.brand-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--cream2);padding:2rem 2.5rem;border-right:1px solid rgba(232,226,213,0.1);white-space:nowrap;flex-shrink:0;}
-.brand-items{display:flex;flex:1;}
-.brand-item{flex:1;padding:2rem;border-right:1px solid rgba(232,226,213,0.08);display:flex;align-items:center;justify-content:center;}
-.brand-item:last-child{border-right:none;}
-
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem;}
 .prod-card{background:var(--dark3);border:1px solid rgba(232,226,213,0.08);border-radius:8px;overflow:hidden;transition:all 0.3s;cursor:pointer;text-decoration:none;color:inherit;display:block;}
 .prod-card:hover{border-color:rgba(232,98,10,0.4);transform:translateY(-4px);}
@@ -94,13 +83,6 @@ h1 em{color:var(--orange);font-style:normal;}
 .prod-desc{font-size:13px;color:var(--cream2);line-height:1.6;}
 .prod-link{display:inline-flex;align-items:center;gap:6px;margin-top:1rem;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--orange);text-decoration:none;}
 .prod-link::after{content:'→';}
-
-.why{background:var(--dark2);}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem;}
-.why-feat{padding:2rem;border-left:3px solid var(--orange);background:var(--dark3);border-radius:0 6px 6px 0;}
-.why-icon{font-size:28px;margin-bottom:1rem;}
-.why-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;margin-bottom:0.5rem;}
-.why-text{font-size:14px;color:var(--cream2);line-height:1.7;}
 
 .contact-section{background:var(--dark);text-align:center;padding:6rem 2.5rem;}
 .contact-box{max-width:600px;margin:0 auto;}
@@ -119,9 +101,6 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
   nav{padding:0 1.5rem;}
   .nav-links{display:none;}
   .section{padding:3.5rem 1.5rem;}
-  .why-grid{grid-template-columns:1fr;}
-  .brands-inner{flex-direction:column;}
-  .brand-label{border-right:none;border-bottom:1px solid rgba(232,226,213,0.1);width:100%;text-align:center;}
   footer{flex-direction:column;gap:1rem;text-align:center;}
   .modal{padding:1.8rem;}
 }
@@ -132,20 +111,24 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
 <div class="modal-overlay" id="modalCotizacion" onclick="if(event.target===this)cerrarModal()">
   <div class="modal">
     <button class="modal-close" onclick="cerrarModal()">&#x2715;</button>
-    <div id="formContent">
+    
+    <form id="formContent" action="https://formspree.io/f/mzdknben" method="POST">
       <div class="modal-title">Solicitar Cotización</div>
       <p class="modal-sub">Complete el formulario y nos pondremos en contacto con usted.</p>
+      
       <div class="form-group">
         <label class="form-label">Nombre</label>
-        <input type="text" class="form-input" id="f-nombre" placeholder="Su nombre completo">
+        <input type="text" class="form-input" name="Nombre" placeholder="Su nombre completo" required>
       </div>
+      
       <div class="form-group">
         <label class="form-label">Teléfono</label>
-        <input type="tel" class="form-input" id="f-telefono" placeholder="Ej: 8888-8888">
+        <input type="tel" class="form-input" name="Telefono" placeholder="Ej: 8888-8888" required>
       </div>
+      
       <div class="form-group">
         <label class="form-label">Tipo de Comprador</label>
-        <select class="form-select" id="f-tipo">
+        <select class="form-select" name="Tipo_de_Comprador" required>
           <option value="" disabled selected>Seleccione una opción</option>
           <option value="Ferretería">Ferretería</option>
           <option value="Proyecto">Proyecto</option>
@@ -153,9 +136,10 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
           <option value="Usuario Final">Usuario Final</option>
         </select>
       </div>
+      
       <div class="form-group">
         <label class="form-label">Provincia</label>
-        <select class="form-select" id="f-provincia">
+        <select class="form-select" name="Provincia" required>
           <option value="" disabled selected>Seleccione su provincia</option>
           <option>San José</option>
           <option>Alajuela</option>
@@ -166,18 +150,17 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
           <option>Limón</option>
         </select>
       </div>
+      
       <div class="form-group">
         <label class="form-label">Correo Electrónico</label>
-        <input type="email" class="form-input" id="f-correo" placeholder="correo@ejemplo.com">
+        <input type="email" class="form-input" name="Correo" placeholder="correo@ejemplo.com" required>
       </div>
-      <button class="form-submit" onclick="enviarFormulario()">Enviar Solicitud &#x2192;</button>
+      
+      <input type="hidden" name="_next" value="https://TU_USUARIO.github.io/TU_REPOSITORIO/">
+      
+      <button type="submit" class="form-submit">Enviar Solicitud &#x2192;</button>
+    </form>
     </div>
-    <div class="form-success" id="formSuccess">
-      <div class="form-success-icon">&#x2705;</div>
-      <div class="form-success-title">¡Solicitud Enviada!</div>
-      <p class="form-success-text">Gracias por contactarnos. Nos comunicaremos con usted a la brevedad.</p>
-    </div>
-  </div>
 </div>
 
 <nav>
@@ -243,6 +226,7 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
       <div class="pipe-arrow">&#x203A;</div>
     </a>
 </div>
+</section>
 
 <section class="section" id="productos">
   <div class="section-tag">Catálogo</div>
@@ -259,33 +243,6 @@ footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;
         <div class="prod-title">Accesorios PVC DWV</div>
         <div class="prod-desc">Sistemas de drenaje, desechos y ventilación para instalaciones residenciales y comerciales.</div>
         <span class="prod-link">Ver catálogo</span>
-<script>
-function cerrarModal(){
-  document.getElementById('modalCotizacion').classList.remove('active');
-  document.getElementById('formContent').style.display='block';
-  document.getElementById('formSuccess').style.display='none';
-}
-
-function enviarFormulario(){
-  var nombre=document.getElementById('f-nombre').value.trim();
-  var telefono=document.getElementById('f-telefono').value.trim();
-  var tipo=document.getElementById('f-tipo').value;
-  var provincia=document.getElementById('f-provincia').value;
-  var correo=document.getElementById('f-correo').value.trim();
-
-  // Validación
-  if(!nombre || !telefono || !tipo || !provincia || !correo){
-    alert('Por favor complete todos los campos.');
-    return;
-  }
-
-  // Éxito
-  document.getElementById('formContent').style.display='none';
-  document.getElementById('formSuccess').style.display='block';
-}
-</script>
-</body>
-</html>
       </div>
     </a>
 
@@ -349,7 +306,7 @@ function enviarFormulario(){
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
         <div class="contact-lbl">Correo</div>
-        <div class="contact-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="17617279637664577d7c6474653974787a">[email&#160;protected]</a></div>
+        <div class="contact-val">contacto@jkscr.com</div>
       </div>
       <div class="contact-item">
         <div class="contact-ico">
@@ -368,20 +325,12 @@ function enviarFormulario(){
   <div class="footer-copy">&#x00A9; 2025 JKSCR &mdash; Importadores de Artículos Ferreteros &middot; Costa Rica</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+// Mantuvimos solo la función para cerrar la ventana modal, ya que el formulario 
+// ahora funciona de manera automática usando HTML.
 function cerrarModal(){
   document.getElementById('modalCotizacion').classList.remove('active');
-  document.getElementById('formContent').style.display='block';
-  document.getElementById('formSuccess').style.display='none';
 }
-
-function enviarFormulario(){
-  var nombre=document.getElementById('f-nombre').value.trim();
-  var telefono=document.getElementById('f-telefono').value.trim();
-  var tipo=document.getElementById('f-tipo').value;
-  var provincia=document.getElementById('f-provincia').value;
-  var correo=document.getElementById('f-correo').value.trim();
-
-  if(!nombre || !telefono || !tipo || !provincia || !correo){
-    alert('Por favor complete todos los campos.');
- 
+</script>
+</body>
+</html>
