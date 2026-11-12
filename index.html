@@ -148,7 +148,7 @@
 .step p{color:var(--muted);font-size:14.5px;max-width:300px;margin:.4rem auto 0}
 
 /* ---------- MARCAS ---------- */
-.brands{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.brands{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .brand{height:130px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);display:grid;place-items:center;padding:1.5rem;transition:border-color .3s,transform .3s}
 .brand:hover{border-color:rgba(255,255,255,.25);transform:translateY(-3px)}
 .brand img{max-height:52px;width:auto;object-fit:contain;filter:grayscale(.15)}
@@ -191,7 +191,7 @@
   .stat:nth-child(2){border-right:0}
   .stat .n{font-size:40px}
   .lines,.apps,.feats,.steps,.brands{grid-template-columns:1fr}
-  .brands{grid-template-columns:1fr 1fr}
+  .brands{grid-template-columns:repeat(3,1fr)}.brand{height:90px;padding:1rem}
   .steps::before{display:none}
   .show-grid{grid-template-columns:1fr}
   .show-grid .g.big{grid-column:auto}
@@ -375,7 +375,6 @@
   <div class="wrap">
     <div class="eyebrow reveal">Marcas que trabajamos</div>
     <div class="brands" style="margin-top:1rem">
-      <div class="brand reveal"><div class="jks">JKS</div></div>
       <div class="brand reveal d1"><img src="omi.png" alt="OMI"></div>
       <div class="brand reveal d2"><img src="tolsen.png" alt="Tolsen"></div>
       <div class="brand reveal d3"><img src="lesso.png" alt="Lesso"></div>
