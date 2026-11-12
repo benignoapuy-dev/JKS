@@ -76,7 +76,9 @@ textarea.fi{min-height:90px;resize:vertical}
 /* ---------- FOOTER ---------- */
 footer{border-top:1px solid var(--line);background:#040814;padding:3.5rem 0 2rem}
 .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem}
-.foot .logo{display:inline-block}
+.foot .logo{display:inline-flex}
+.logo .logo-txt{display:flex;flex-direction:column;line-height:.85;font-size:26px;letter-spacing:2px;color:var(--cream)}
+.logo-txt small{font-family:'Barlow',sans-serif;font-size:10px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--orange);margin-bottom:3px}
 .foot p{color:var(--muted);font-size:14px;margin-top:.8rem;max-width:340px}
 .foot h4{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;font-weight:600}
 .foot ul{list-style:none;display:grid;gap:.5rem}
