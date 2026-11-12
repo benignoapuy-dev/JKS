@@ -3,840 +3,306 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo de Productos — JKSCR</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Catálogo de Productos — JKS CR</title>
+<meta name="description" content="Catálogo JKS CR: accesorios PVC SCH40, DWV, CPVC, Conduit, tubo PVC y canoas. Arme su lista y solicite cotización.">
+<meta name="theme-color" content="#060b1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Barlow',sans-serif;background:#0a0f1a;color:#e8e2d5;}
-:root{--orange:#e8620a;--orange-light:#f4874a;--dark:#0a0f1a;--dark2:#111722;--dark3:#1a2235;--cream:#e8e2d5;--cream2:#b8b2a5;}
+.c-hero{padding:130px 0 3rem;position:relative;overflow:hidden;background:radial-gradient(800px 400px at 85% 0%,rgba(61,123,255,.15),transparent 60%),radial-gradient(600px 400px at 0% 100%,rgba(242,106,18,.12),transparent 60%)}
+.c-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(46px,6.5vw,86px);font-weight:800;line-height:.92;letter-spacing:-1px}
+.c-hero h1 em{font-style:normal;color:var(--orange)}
+.c-hero .lead{max-width:620px}
+.c-hero .how{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:2rem;color:var(--muted);font-size:14px}
+.c-hero .how b{color:var(--orange);font-family:'Barlow Condensed',sans-serif;font-size:18px;margin-right:6px}
 
-nav{background:rgba(10,15,26,0.97);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid rgba(232,98,10,0.2);position:sticky;top:0;z-index:100;}
-.logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:26px;letter-spacing:2px;color:#e8e2d5;text-decoration:none;}
-.logo span{color:var(--orange);}
-.nav-back{color:var(--cream2);text-decoration:none;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:8px;transition:color 0.2s;}
-.nav-back:hover{color:var(--orange);}
-.nav-back::before{content:'←';}
+.tools{position:sticky;top:70px;z-index:50;background:rgba(6,11,26,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tools-in{display:flex;gap:1rem;align-items:center;padding:.9rem 1.5rem}
+.search{position:relative;flex:0 0 300px}
+.search input{width:100%;background:#0a1228;border:1px solid rgba(220,228,255,.14);border-radius:999px;padding:11px 16px 11px 42px;color:var(--cream);font:inherit;font-size:14.5px;outline:none}
+.search input:focus{border-color:var(--orange)}
+.search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--muted)}
+.chips{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;flex:1}
+.chips::-webkit-scrollbar{display:none}
+.fchip{flex:0 0 auto;background:transparent;border:1px solid rgba(220,228,255,.15);color:var(--muted);padding:9px 16px;border-radius:999px;font:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:8px}
+.fchip i{width:8px;height:8px;border-radius:50%;background:var(--c,var(--orange))}
+.fchip:hover{color:var(--cream);border-color:rgba(220,228,255,.35)}
+.fchip.on{background:var(--cream);color:var(--bg);border-color:var(--cream)}
 
-.hero-cat{padding:4rem 2.5rem 3rem;border-bottom:1px solid rgba(232,226,213,0.08);}
-.cat-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(232,98,10,0.12);border:1px solid rgba(232,98,10,0.3);border-radius:30px;padding:6px 16px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:1.2rem;}
-.cat-tag::before{content:'';width:6px;height:6px;background:var(--orange);border-radius:50%;display:block;}
-.cat-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(42px,5vw,72px);font-weight:800;line-height:0.92;letter-spacing:-1px;margin-bottom:1rem;}
-.cat-title em{color:var(--orange);font-style:normal;}
-.cat-sub{font-size:16px;color:var(--cream2);max-width:560px;line-height:1.7;font-weight:300;}
+.cat{padding:3rem 0 5rem}
+.csec{margin-bottom:4.5rem;scroll-margin-top:150px}
+.csec-head{display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;margin-bottom:1.8rem;padding:1.4rem;border-radius:var(--r);background:linear-gradient(120deg,color-mix(in srgb,var(--c) 16%,var(--card)),var(--card) 60%);border:1px solid color-mix(in srgb,var(--c) 30%,transparent)}
+.csec-head .thumb{width:84px;height:84px;border-radius:14px;overflow:hidden;background:#0a1228;display:grid;place-items:center;color:var(--c)}
+.csec-head .thumb img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.csec-head .thumb svg{width:56px;height:56px}
+.csec-head h2{font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:800;line-height:1}
+.csec-head p{color:var(--muted);font-size:14.5px;margin-top:.35rem;max-width:640px}
+.csec-head .cnt{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--c);background:rgba(6,11,26,.5);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);padding:6px 12px;border-radius:999px;white-space:nowrap}
 
-.filter-bar{display:flex;gap:0.75rem;padding:2rem 2.5rem;overflow-x:auto;border-bottom:1px solid rgba(232,226,213,0.06);background:var(--dark2);}
-.filter-btn{background:transparent;border:1px solid rgba(232,226,213,0.15);color:var(--cream2);padding:8px 18px;border-radius:30px;font-size:13px;font-weight:500;letter-spacing:0.5px;cursor:pointer;white-space:nowrap;transition:all 0.2s;font-family:'Barlow',sans-serif;}
-.filter-btn:hover{border-color:var(--orange);color:var(--orange);}
-.filter-btn.active{background:var(--orange);border-color:var(--orange);color:#fff;}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
+.it{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;display:flex;flex-direction:column;gap:.9rem;transition:border-color .25s,transform .25s}
+.it:hover{border-color:color-mix(in srgb,var(--c) 45%,transparent);transform:translateY(-2px)}
+.it-top{display:flex;gap:1rem;align-items:center}
+.it-ic{width:56px;height:56px;flex:0 0 56px;border-radius:12px;display:grid;place-items:center;color:var(--c);background:color-mix(in srgb,var(--c) 10%,#0a1228)}
+.it-ic svg{width:40px;height:40px}
+.it h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;line-height:1.1}
+.it small{color:var(--muted);font-size:12.5px}
+.sizes{display:flex;flex-wrap:wrap;gap:6px}
+.sz{font:inherit;font-size:12.5px;font-weight:500;padding:6px 10px;border-radius:8px;border:1px solid rgba(220,228,255,.13);background:rgba(255,255,255,.03);color:var(--cream);cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:5px}
+.sz:hover{border-color:var(--c);color:#fff}
+.sz.on{background:var(--c);border-color:var(--c);color:#0a0f1e;font-weight:700}
+.sz.on::before{content:'✓'}
+.empty{text-align:center;padding:4rem 1rem;color:var(--muted);display:none}
+.empty b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:28px;color:var(--cream);margin-bottom:.3rem}
 
-.catalog-body{padding:3rem 2.5rem;}
+/* Lista de cotización */
+.fab{position:fixed;right:22px;bottom:22px;z-index:150;display:flex;align-items:center;gap:10px;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:14px 22px;font:inherit;font-weight:600;font-size:14px;letter-spacing:.5px;cursor:pointer;box-shadow:0 16px 40px -10px rgba(242,106,18,.7);transform:translateY(120px);transition:transform .35s cubic-bezier(.2,.8,.2,1.2)}
+.fab.on{transform:none}
+.fab svg{width:20px;height:20px}
+.fab .b{background:#fff;color:var(--orange);border-radius:999px;min-width:24px;height:24px;display:grid;place-items:center;font-size:13px;font-weight:800;padding:0 6px}
+.fab.bump{animation:bump .35s}
+@keyframes bump{50%{transform:scale(1.1)}}
+.drawer-bg{position:fixed;inset:0;z-index:250;background:rgba(2,5,14,.6);opacity:0;pointer-events:none;transition:.3s}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:260;width:min(420px,100%);background:#0b1430;border-left:1px solid var(--line);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.drawer.on{transform:none}.drawer-bg.on{opacity:1;pointer-events:auto}
+.dr-h{padding:1.4rem 1.4rem 1rem;border-bottom:1px solid var(--line);position:relative}
+.dr-h h3{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800}
+.dr-h p{color:var(--muted);font-size:13.5px}
+.dr-list{flex:1;overflow:auto;padding:1rem 1.4rem;display:flex;flex-direction:column;gap:.6rem}
+.dr-it{display:flex;align-items:center;gap:.8rem;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.7rem .8rem}
+.dr-it .ic{width:38px;height:38px;flex:0 0 38px;color:var(--orange2)}
+.dr-it .ic svg{width:100%;height:100%}
+.dr-it .t{flex:1;font-size:14px;line-height:1.25}
+.dr-it .t b{display:block;font-weight:600}
+.dr-it .t span{color:var(--muted);font-size:12.5px}
+.dr-it button{background:none;border:0;color:var(--muted);font-size:18px;cursor:pointer;width:30px;height:30px;border-radius:50%}
+.dr-it button:hover{background:rgba(255,80,80,.15);color:#ff9a9a}
+.dr-f{padding:1.2rem 1.4rem;border-top:1px solid var(--line);display:grid;gap:.6rem}
+.dr-f .btn{justify-content:center}
+.dr-empty{color:var(--muted);text-align:center;padding:3rem 1rem;font-size:14.5px}
 
-.cat-section{margin-bottom:4rem;}
-.cat-section-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(232,226,213,0.08);}
-.cat-section-dot{width:10px;height:10px;border-radius:50%;background:var(--orange);flex-shrink:0;}
-.cat-section-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
-.cat-section-count{font-size:12px;color:var(--cream2);letter-spacing:1px;text-transform:uppercase;margin-left:auto;background:rgba(232,226,213,0.06);padding:4px 12px;border-radius:20px;}
-
-.items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
-.item-card{background:var(--dark3);border:1px solid rgba(232,226,213,0.07);border-radius:6px;padding:1.2rem 1.4rem;transition:all 0.2s;}
-.item-card:hover{border-color:rgba(232,98,10,0.35);background:#1d2a3d;}
-.item-medida{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:0.5px;color:var(--cream);}
-.item-tag{display:inline-block;margin-top:6px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--orange);background:rgba(232,98,10,0.1);padding:3px 8px;border-radius:3px;}
-
-.subsection{margin-bottom:3rem;}
-.subsection-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cream2);margin-bottom:1rem;padding-left:1rem;border-left:2px solid var(--orange);}
-
-.cat-divider{height:1px;background:rgba(232,226,213,0.06);margin:3rem 0;}
-
-footer{background:#060a12;padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(232,226,213,0.06);margin-top:2rem;}
-.footer-copy{font-size:13px;color:var(--cream2);}
-
-@media(max-width:768px){
-  nav{padding:0 1.2rem;}
-  .hero-cat{padding:2.5rem 1.5rem 2rem;}
-  .filter-bar{padding:1.2rem 1.5rem;}
-  .catalog-body{padding:2rem 1.5rem;}
-  .items-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}
-  footer{flex-direction:column;gap:1rem;text-align:center;}
+@media(max-width:760px){
+  .tools-in{flex-direction:column;align-items:stretch;gap:.7rem;padding:.8rem 1rem}
+  .search{flex:auto}
+  .csec-head{grid-template-columns:auto 1fr}
+  .csec-head .cnt{grid-column:1/-1;justify-self:start}
+  .csec-head .thumb{width:64px;height:64px}
+  .csec-head h2{font-size:28px}
+  .items{grid-template-columns:1fr}
+  .fab{right:14px;bottom:14px;left:14px;justify-content:center}
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="logo">JKS<span>CR</span></a>
-  <a href="index.html" class="nav-back">Volver al inicio</a>
-</nav>
+<header class="nav solid">
+  <div class="wrap nav-in">
+    <a href="index.html" class="logo" aria-label="JKS CR inicio">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 20V11a7 7 0 0 1 7-7h9"/><path d="M14 14h6"/></svg></span>
+      <span style="color:var(--cream)">JKS<span>CR</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="index.html#galeria">Galería</a></li>
+      <li><a href="index.html#nosotros">Nosotros</a></li>
+      <li><a href="catalogo.html" class="active">Catálogo</a></li>
+      <li><a href="#" class="btn btn-o btn-sm" data-cotizar>Cotizar</a></li>
+    </ul>
+    <button class="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-<div class="hero-cat">
-  <div class="cat-tag">Catálogo Completo</div>
-  <h1 class="cat-title">Lista de <em>Productos</em></h1>
-  <p class="cat-sub">Accesorios de PVC, tubería, sistemas eléctricos y más. Contáctenos para consultar disponibilidad y precios.</p>
+<section class="c-hero">
+  <div class="wrap">
+    <div class="eyebrow reveal">Catálogo de productos</div>
+    <h1 class="reveal d1">Encuentre la pieza.<br><em>Arme su lista.</em></h1>
+    <p class="lead reveal d2">Accesorios y tubería PVC, CPVC, Conduit y canoas. Toque las medidas que necesita para agregarlas a su lista y envíela para recibir su cotización.</p>
+    <div class="how reveal d3"><span><b>1</b>Toque una medida</span><span><b>2</b>Revise su lista</span><span><b>3</b>Solicite cotización</span></div>
+  </div>
+</section>
+
+<div class="tools">
+  <div class="wrap tools-in">
+    <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="q" type="search" placeholder="Buscar: codo, tee 2&quot;, sifón…" autocomplete="off"></label>
+    <div class="chips" id="chips"></div>
+  </div>
 </div>
 
-<div class="filter-bar">
-  <button class="filter-btn active" onclick="filtrar('todos', this)">Todos</button>
-  <button class="filter-btn" onclick="filtrar('sch40', this)">PVC SCH40</button>
-  <button class="filter-btn" onclick="filtrar('dwv', this)">PVC DWV</button>
-  <button class="filter-btn" onclick="filtrar('cpvc', this)">CPVC</button>
-  <button class="filter-btn" onclick="filtrar('conduit', this)">Conduit</button>
-  <button class="filter-btn" onclick="filtrar('canoa', this)">Canoa</button>
-  <button class="filter-btn" onclick="filtrar('tubo', this)">Tubo PVC</button>
-</div>
+<main class="cat">
+  <div class="wrap" id="catalogo"></div>
+  <div class="wrap empty" id="empty"><b>Sin resultados</b>Pruebe con otra palabra o escríbanos: con gusto le ayudamos a encontrarlo.</div>
+</main>
 
-<div class="catalog-body">
+<button class="fab" id="fab" aria-label="Ver mi lista">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2" fill="currentColor"/><circle cx="4.5" cy="12" r="1.2" fill="currentColor"/><circle cx="4.5" cy="18" r="1.2" fill="currentColor"/></svg>
+  Mi lista <span class="b" id="fabN">0</span>
+</button>
 
-  <!-- SCH40 -->
-  <div class="cat-section" data-cat="sch40">
-    <div class="cat-section-header">
-      <div class="cat-section-dot"></div>
-      <div class="cat-section-title">Accesorios PVC Presión SCH40</div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Codo Liso Presión SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Codo 45° Presión SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tee Presión SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Unión Lisa Presión SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tapón Liso Presión SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Adaptador Macho Presión SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Adaptador Hembra Presión SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tapón Macho Presión SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tapón Hembra Rosca Presión SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Codo con Rosca SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tee con Rosca SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Llave de Paso PVC</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Llave de Chorro</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Unión Todo Rosca SCH40</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Unión de Transición</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Unión de Tope</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Reducción PVC</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">3/4" × 1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1" × 1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1" × 3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4" × 1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4" × 3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4" × 1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2" × 1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2" × 3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2" × 1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2" × 1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2" × 1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2" × 3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2" × 1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2" × 1-1/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">2" × 1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3" × 1"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3" × 1-1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">3" × 2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4" × 2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">4" × 3"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">6" × 4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">8" × 4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">8" × 6"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Inserto Metálico</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">Macho 1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">Macho 3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">Codo 1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">Codo 3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">Unión 1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">Unión 3/4"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">Tee 1/2"</div><div class="item-tag">SCH40</div></div>
-        <div class="item-card"><div class="item-medida">Tee 3/4"</div><div class="item-tag">SCH40</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Accesorios 1/2" Económicos TECO</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">Codo Liso 1/2"</div><div class="item-tag">TECO</div></div>
-        <div class="item-card"><div class="item-medida">Tee Lisa 1/2"</div><div class="item-tag">TECO</div></div>
-        <div class="item-card"><div class="item-medida">Unión Lisa 1/2"</div><div class="item-tag">TECO</div></div>
-        <div class="item-card"><div class="item-medida">Adapt. Hembra 1/2"</div><div class="item-tag">TECO</div></div>
-        <div class="item-card"><div class="item-medida">Adapt. Macho 1/2"</div><div class="item-tag">TECO</div></div>
-      </div>
-    </div>
+<aside class="drawer" id="drawer" aria-label="Mi lista de cotización">
+  <div class="dr-h">
+    <h3>Mi lista</h3><p>Productos para cotizar</p>
+    <button class="x" id="drClose" aria-label="Cerrar">✕</button>
   </div>
-
-  <div class="cat-divider"></div>
-
-  <!-- DWV -->
-  <div class="cat-section" data-cat="dwv">
-    <div class="cat-section-header">
-      <div class="cat-section-dot"></div>
-      <div class="cat-section-title">Accesorios PVC Drenaje DWV</div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Codo Liso Drenaje DWV</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">2" Radio Corto</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">3" Radio Corto</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4" Radio Corto</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">6"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">8"</div><div class="item-tag">DWV</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Codo 45° Drenaje DWV</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">6"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">8"</div><div class="item-tag">DWV</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tee Lisa Drenaje DWV</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">3" Radio Corto</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4" Radio Corto</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">6"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">8"</div><div class="item-tag">DWV</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Unión Lisa Drenaje DWV</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">6"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">8"</div><div class="item-tag">DWV</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tapón Liso Drenaje DWV</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">6"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">8"</div><div class="item-tag">DWV</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Yee Drenaje DWV</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4" ECO</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">6"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">8"</div><div class="item-tag">DWV</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Adaptador Registro DWV</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">6"</div><div class="item-tag">DWV</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Sifón y Adaptador de Sifón</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1-1/2" Con Registro</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2" Sin Registro</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">2" Con Registro</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">2" Sin Registro</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">3" Sin Registro</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4" Sin Registro</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">Codo Espiga 2"</div><div class="item-tag">DWV</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Flanger Inodoro</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">3"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">DWV</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Pared Gruesa Certificado NSF</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">Codo 1-1/4"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 1-1/2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 3"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 4"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 6"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 8"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 45° 1-1/4"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 45° 1-1/2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 45° 2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 45° 3"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 45° 4"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 45° 6"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Codo 45° 8"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Yee 1-1/4"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Yee 1-1/2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Yee 2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Yee 3"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Yee 4"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Yee 6"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Yee 8"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Tee Lisa 1-1/4"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Tee Lisa 1-1/2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Tee Lisa 2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Tee Lisa 3"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Tee Lisa 4"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Tee Lisa 6"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">Tee Lisa 8"</div><div class="item-tag">NSF</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tee Reducida DWV Pared Gruesa NSF</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">2×2×1-1/2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">3×3×1-1/2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">3×3×2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">4×4×2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">4×4×3"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">6×6×4"</div><div class="item-tag">NSF</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Yee Reducida Pared Gruesa NSF</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">2×2×1-1/2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">3×3×1-1/2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">3×3×2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">4×4×2"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">4×4×3"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">6×6×4"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">8×8×4"</div><div class="item-tag">NSF</div></div>
-        <div class="item-card"><div class="item-medida">8×8×6"</div><div class="item-tag">NSF</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Gaza Bajante</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">Gaza 2"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">Gaza 3"</div><div class="item-tag">DWV</div></div>
-        <div class="item-card"><div class="item-medida">Gaza 4"</div><div class="item-tag">DWV</div></div>
-      </div>
-    </div>
+  <div class="dr-list" id="drList"></div>
+  <div class="dr-f">
+    <button class="btn btn-o" id="drSend">Solicitar cotización →</button>
+    <button class="btn btn-g btn-sm" id="drClear">Vaciar lista</button>
   </div>
-
-  <div class="cat-divider"></div>
-
-  <!-- CPVC -->
-  <div class="cat-section" data-cat="cpvc">
-    <div class="cat-section-header">
-      <div class="cat-section-dot"></div>
-      <div class="cat-section-title">Accesorios CPVC</div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Accesorios CPVC</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">Unión 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Unión 3/4"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Unión 1"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Codo 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Codo 3/4"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Codo 1"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Codo 45° 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Codo 45° 3/4"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Codo 45° 1"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Tee 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Tee 3/4"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Tee 1"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Tapón 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Tapón 3/4"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Tapón 1"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Adapt. Macho 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Adapt. Macho 3/4"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Adapt. Macho 1"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Adapt. Hembra 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Adapt. Hembra 3/4"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Adapt. Hembra 1"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Llave de Paso 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Llave de Paso 3/4"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Llave de Paso 1"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Unión de Tope 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Reducción 3/4"×1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Unión Expansión 1/2"</div><div class="item-tag">CPVC</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Inserto Metálico CPVC</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">Macho Inserto 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Macho Inserto 3/4"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Codo Inserto 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Codo Inserto 3/4"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Unión Inserto 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Unión Inserto 3/4"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Tee Inserto 1/2"</div><div class="item-tag">CPVC</div></div>
-        <div class="item-card"><div class="item-medida">Tee Inserto 3/4"</div><div class="item-tag">CPVC</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tubo CPVC SDR-11</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">CPVC SDR-11</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">CPVC SDR-11</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">CPVC SDR-11</div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cat-divider"></div>
-
-  <!-- CONDUIT -->
-  <div class="cat-section" data-cat="conduit">
-    <div class="cat-section-header">
-      <div class="cat-section-dot"></div>
-      <div class="cat-section-title">Sistema Conduit</div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tubo Conduit Tipo A</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">Conduit</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Conector Conduit Tipo A</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">Conduit</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Unión Conduit Tipo A</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">Conduit</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Curva Conduit Tipo A</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2"</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">2"</div><div class="item-tag">Conduit</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tubo Conduit Liviano</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">3/4"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">1"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4"</div><div class="item-tag">Liviano</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Conector / Unión / Curva Conduit Liviano</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">Conector 1/2"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">Conector 3/4"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">Unión 1/2"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">Unión 3/4"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">Unión 1"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">Unión 1-1/4"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">Curva 1/2"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">Curva 3/4"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">Curva 1"</div><div class="item-tag">Liviano</div></div>
-        <div class="item-card"><div class="item-medida">Curva 1-1/4"</div><div class="item-tag">Liviano</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Caja Conduit</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">Rectangular</div><div class="item-tag">Conduit</div></div>
-        <div class="item-card"><div class="item-medida">Octogonal</div><div class="item-tag">Conduit</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Conduit Flexible UL</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2" — 61 m</div><div class="item-tag">Flexible</div></div>
-        <div class="item-card"><div class="item-medida">3/4" — 30.5 m</div><div class="item-tag">Flexible</div></div>
-        <div class="item-card"><div class="item-medida">1" — 30.5 m</div><div class="item-tag">Flexible</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Accesorios Conduit Flex Snap</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">Conector 1/2"</div><div class="item-tag">Flex</div></div>
-        <div class="item-card"><div class="item-medida">Conector 3/4"</div><div class="item-tag">Flex</div></div>
-        <div class="item-card"><div class="item-medida">Conector 1"</div><div class="item-tag">Flex</div></div>
-        <div class="item-card"><div class="item-medida">Unión 1/2"</div><div class="item-tag">Flex</div></div>
-        <div class="item-card"><div class="item-medida">Unión 3/4"</div><div class="item-tag">Flex</div></div>
-        <div class="item-card"><div class="item-medida">Unión 1"</div><div class="item-tag">Flex</div></div>
-        <div class="item-card"><div class="item-medida">Conector Macho 1/2"</div><div class="item-tag">Flex</div></div>
-        <div class="item-card"><div class="item-medida">Conector Macho 3/4"</div><div class="item-tag">Flex</div></div>
-        <div class="item-card"><div class="item-medida">Conector Macho 1"</div><div class="item-tag">Flex</div></div>
-        <div class="item-card"><div class="item-medida">Adapt. Flex a Rígido 1/2"</div><div class="item-tag">Flex</div></div>
-        <div class="item-card"><div class="item-medida">Adapt. Flex a Rígido 3/4"</div><div class="item-tag">Flex</div></div>
-        <div class="item-card"><div class="item-medida">Adapt. Flex a Rígido 1"</div><div class="item-tag">Flex</div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cat-divider"></div>
-
-  <!-- TUBO PVC -->
-  <div class="cat-section" data-cat="tubo">
-    <div class="cat-section-header">
-      <div class="cat-section-dot"></div>
-      <div class="cat-section-title">Tubo PVC</div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tubo PVC Presión</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">1/2" SDR13.5</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">1/2" SCH40</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">3/4" SDR17</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">3/4" SCH40</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">1" SDR17</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">1" SDR26</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">1" SCH40</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">1-1/4" Sanitario</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2" SDR17</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2" SDR26</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">1-1/2" SDR32.5</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">2" SDR17</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">2" SDR26</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">2" SDR40</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">2" SDR51</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">3" SDR26</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">3" SDR50</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">3" SDR64</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">4" SDR26</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">4" SDR50</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">4" SDR64</div><div class="item-tag">Tubo</div></div>
-        <div class="item-card"><div class="item-medida">6" SDR50</div><div class="item-tag">Tubo</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Tubo Tipo Drenafort</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">4"</div><div class="item-tag">Drenafort</div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cat-divider"></div>
-
-  <!-- CANOA -->
-  <div class="cat-section" data-cat="canoa">
-    <div class="cat-section-header">
-      <div class="cat-section-dot"></div>
-      <div class="cat-section-title">Sistema de Canoa</div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Canoa Colonial</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">Canoa 6M</div><div class="item-tag">Colonial</div></div>
-        <div class="item-card"><div class="item-medida">Tapas</div><div class="item-tag">Colonial</div></div>
-        <div class="item-card"><div class="item-medida">Soporte</div><div class="item-tag">Colonial</div></div>
-        <div class="item-card"><div class="item-medida">Unión</div><div class="item-tag">Colonial</div></div>
-        <div class="item-card"><div class="item-medida">Junta de Expansión</div><div class="item-tag">Colonial</div></div>
-        <div class="item-card"><div class="item-medida">Bajante 2"</div><div class="item-tag">Colonial</div></div>
-        <div class="item-card"><div class="item-medida">Bajante 3"</div><div class="item-tag">Colonial</div></div>
-        <div class="item-card"><div class="item-medida">Esquina Interna</div><div class="item-tag">Colonial</div></div>
-        <div class="item-card"><div class="item-medida">Esquina Externa</div><div class="item-tag">Colonial</div></div>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-title">Canoa Alto Caudal</div>
-      <div class="items-grid">
-        <div class="item-card"><div class="item-medida">Canoa 6M</div><div class="item-tag">Alto Caudal</div></div>
-        <div class="item-card"><div class="item-medida">Tapas</div><div class="item-tag">Alto Caudal</div></div>
-        <div class="item-card"><div class="item-medida">Soporte</div><div class="item-tag">Alto Caudal</div></div>
-        <div class="item-card"><div class="item-medida">Unión</div><div class="item-tag">Alto Caudal</div></div>
-        <div class="item-card"><div class="item-medida">Bajante 4"</div><div class="item-tag">Alto Caudal</div></div>
-        <div class="item-card"><div class="item-medida">Esquina Interna</div><div class="item-tag">Alto Caudal</div></div>
-        <div class="item-card"><div class="item-medida">Esquina Externa</div><div class="item-tag">Alto Caudal</div></div>
-      </div>
-    </div>
-  </div>
-
-</div>
+</aside>
+<div class="drawer-bg" id="drBg"></div>
 
 <footer>
-  <div class="logo" style="font-size:18px;"><a href="index.html" class="logo">JKS<span>CR</span></a></div>
-  <div class="footer-copy">&#x00A9; 2025 JKSCR &mdash; Importadores de Artículos Ferreteros &middot; Costa Rica</div>
-  <div style="font-size:12px;color:var(--cream2);">ventas@jkscr.com</div>
+  <div class="wrap">
+    <div class="foot">
+      <div><a href="index.html" class="logo">JKS<span>CR</span></a>
+        <p>Importadores y distribuidores de accesorios y tubería PVC, CPVC, Conduit y artículos ferreteros para todo Costa Rica.</p></div>
+      <div><h4>Navegación</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="index.html#nosotros">Nosotros</a></li><li><a href="#" data-cotizar>Cotizar</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="mailto:contacto@jkscr.com">contacto@jkscr.com</a></li><li><a href="#">Costa Rica</a></li></ul></div>
+    </div>
+    <div class="copy"><span>© <span id="year">2026</span> JKS CR · Importadores de Artículos Ferreteros</span><span>Consulte disponibilidad y precios por cotización</span></div>
+  </div>
 </footer>
 
+<div class="modal-bg" id="modalCot">
+  <div class="modal" role="dialog" aria-labelledby="mt">
+    <button class="x" onclick="cerrarCotizacion()" aria-label="Cerrar">✕</button>
+    <form id="formCot">
+      <h3 id="mt">Solicitar cotización</h3>
+      <p class="sub">Complete sus datos y le contactaremos a la brevedad.</p>
+      <input type="hidden" name="_subject" value="Nueva solicitud de cotización (catálogo) — jkscr.com">
+      <div class="fg"><label>Nombre</label><input class="fi" name="Nombre" required placeholder="Su nombre completo"></div>
+      <div class="frow">
+        <div class="fg"><label>Teléfono</label><input class="fi" type="tel" name="Telefono" required placeholder="8888-8888"></div>
+        <div class="fg"><label>Correo</label><input class="fi" type="email" name="email" required placeholder="correo@ejemplo.com"></div>
+      </div>
+      <div class="fg"><label>Tipo de comprador</label>
+        <select class="fi" name="Tipo_de_Comprador" required>
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option>Ferretería</option><option>Proyecto / Constructor</option><option>Gobierno / Institución</option><option>Usuario final</option>
+        </select></div>
+      <div class="frow">
+        <div class="fg"><label>Provincia</label>
+          <select class="fi" name="Provincia" id="f-prov" required>
+            <option value="" disabled selected>Provincia</option>
+            <option>San José</option><option>Alajuela</option><option>Cartago</option><option>Heredia</option><option>Guanacaste</option><option>Puntarenas</option><option>Limón</option>
+          </select></div>
+        <div class="fg"><label>Cantón</label>
+          <select class="fi" name="Canton" id="f-cant" required><option value="" disabled selected>Cantón</option></select></div>
+      </div>
+      <div class="fg"><label>Productos de interés (puede indicar cantidades)</label><textarea class="fi" name="Productos" rows="6" placeholder="Ej.: Codo SCH40 ½&quot; — 50 unid."></textarea></div>
+      <button type="submit" class="btn btn-o">Enviar solicitud →</button>
+      <div class="fmsg"></div>
+    </form>
+  </div>
+</div>
+
+<script src="assets/iconos.js"></script>
+<script src="assets/catalogo-data.js"></script>
 <script>
-function filtrar(cat, btn){
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.cat-section').forEach(s=>{
-    if(cat==='todos'||s.dataset.cat===cat){
-      s.style.display='block';
-    } else {
-      s.style.display='none';
-    }
+(function(){
+  var IC = window.JKS_ICONS, CAT = window.JKS_CATALOGO;
+  var root = document.getElementById('catalogo'), chips = document.getElementById('chips');
+  var esc = function(s){ return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); };
+  var norm = function(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); };
+
+  // ---- Lista (guardada en este navegador) ----
+  var KEY = 'jks_lista', lista = [];
+  try { lista = JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){}
+  var save = function(){ try { localStorage.setItem(KEY, JSON.stringify(lista)); } catch(e){} };
+  var id = function(p,m){ return p+' | '+m; };
+  var has = function(k){ return lista.some(function(x){ return x.k===k; }); };
+
+  // ---- Render ----
+  chips.innerHTML = '<button class="fchip on" data-f="all">Todos</button>' +
+    CAT.map(function(c){ return '<button class="fchip" data-f="'+c.id+'" style="--c:'+c.color+'"><i></i>'+c.titulo+'</button>'; }).join('');
+
+  root.innerHTML = CAT.map(function(c){
+    var refs = c.piezas.reduce(function(a,p){ return a+p.m.length; },0);
+    var thumb = c.img ? '<img src="'+c.img+'" alt="">' : IC.pick(c.id==='canoa'?'canoa':'tubo');
+    return '<section class="csec" id="'+c.id+'" data-cat="'+c.id+'" style="--c:'+c.color+'">'+
+      '<div class="csec-head reveal"><div class="thumb">'+thumb+'</div><div><h2>'+c.titulo+'</h2><p>'+c.desc+'</p></div><span class="cnt">'+refs+' referencias</span></div>'+
+      '<div class="items">'+ c.piezas.map(function(p){
+        return '<article class="it" data-name="'+esc(norm(p.n+' '+c.titulo+' '+p.m.join(' ')))+'">'+
+          '<div class="it-top"><div class="it-ic">'+IC.pick(p.n+' '+(p.m[0]||''))+'</div><div><h3>'+esc(p.n)+'</h3><small>'+p.m.length+(p.m.length===1?' opción':' opciones')+'</small></div></div>'+
+          '<div class="sizes">'+p.m.map(function(m){
+            var k = id(p.n,m);
+            return '<button class="sz'+(has(k)?' on':'')+'" data-p="'+esc(p.n)+'" data-m="'+esc(m)+'">'+esc(m)+'</button>';
+          }).join('')+'</div></article>';
+      }).join('') + '</div></section>';
+  }).join('');
+
+  // ---- Filtros y búsqueda ----
+  var filtro = 'all', q = document.getElementById('q'), empty = document.getElementById('empty');
+  var aplicar = function(){
+    var t = norm(q.value.trim()), any = false;
+    document.querySelectorAll('.csec').forEach(function(s){
+      var okCat = filtro==='all' || s.dataset.cat===filtro, vis = 0;
+      s.querySelectorAll('.it').forEach(function(it){
+        var ok = okCat && (!t || t.split(/\s+/).every(function(w){ return it.dataset.name.indexOf(w) > -1; }));
+        it.style.display = ok ? '' : 'none'; if (ok) vis++;
+      });
+      s.style.display = vis ? '' : 'none'; if (vis) any = true;
+    });
+    empty.style.display = any ? 'none' : 'block';
+  };
+  chips.addEventListener('click', function(e){
+    var b = e.target.closest('.fchip'); if (!b) return;
+    chips.querySelectorAll('.fchip').forEach(function(x){ x.classList.toggle('on', x===b); });
+    filtro = b.dataset.f; aplicar();
+    window.scrollTo({top: document.querySelector('.tools').offsetTop - 70, behavior:'smooth'});
   });
-  document.querySelectorAll('.cat-divider').forEach(d=>d.style.display=cat==='todos'?'block':'none');
-}
+  q.addEventListener('input', aplicar);
+
+  // Abrir sección desde enlace (#sch40, #dwv…)
+  var fromHash = function(){
+    var h = location.hash.slice(1), b = chips.querySelector('[data-f="'+h+'"]');
+    if (b) { b.click(); }
+  };
+  window.addEventListener('hashchange', fromHash);
+  setTimeout(fromHash, 50);
+
+  // ---- Agregar / quitar medidas ----
+  var fab = document.getElementById('fab'), fabN = document.getElementById('fabN');
+  var drawer = document.getElementById('drawer'), drBg = document.getElementById('drBg'), drList = document.getElementById('drList');
+  var pintar = function(){
+    fabN.textContent = lista.length;
+    fab.classList.toggle('on', lista.length > 0);
+    drList.innerHTML = lista.length ? lista.map(function(x,i){
+      return '<div class="dr-it"><div class="ic">'+IC.pick(x.p+' '+x.m)+'</div><div class="t"><b>'+esc(x.p)+'</b><span>'+esc(x.m)+'</span></div><button data-i="'+i+'" aria-label="Quitar">✕</button></div>';
+    }).join('') : '<div class="dr-empty">Su lista está vacía.<br>Toque las medidas en el catálogo para agregarlas.</div>';
+  };
+  root.addEventListener('click', function(e){
+    var b = e.target.closest('.sz'); if (!b) return;
+    var k = id(b.dataset.p, b.dataset.m);
+    if (has(k)) { lista = lista.filter(function(x){ return x.k!==k; }); b.classList.remove('on'); }
+    else { lista.push({k:k, p:b.dataset.p, m:b.dataset.m}); b.classList.add('on'); fab.classList.remove('bump'); void fab.offsetWidth; fab.classList.add('bump'); }
+    save(); pintar();
+  });
+  drList.addEventListener('click', function(e){
+    var b = e.target.closest('button[data-i]'); if (!b) return;
+    var x = lista.splice(+b.dataset.i,1)[0];
+    document.querySelectorAll('.sz').forEach(function(s){ if (id(s.dataset.p,s.dataset.m)===x.k) s.classList.remove('on'); });
+    save(); pintar();
+  });
+  var abrir = function(){ drawer.classList.add('on'); drBg.classList.add('on'); };
+  var cerrar = function(){ drawer.classList.remove('on'); drBg.classList.remove('on'); };
+  fab.onclick = abrir; drBg.onclick = cerrar; document.getElementById('drClose').onclick = cerrar;
+  document.getElementById('drClear').onclick = function(){
+    lista = []; save(); pintar(); document.querySelectorAll('.sz.on').forEach(function(s){ s.classList.remove('on'); });
+  };
+  document.getElementById('drSend').onclick = function(){
+    cerrar();
+    abrirCotizacion(lista.map(function(x){ return '• '+x.p+' — '+x.m+' — cant.: '; }).join('\n'));
+  };
+  window.onCotizacionEnviada = function(){
+    lista = []; save(); pintar(); document.querySelectorAll('.sz.on').forEach(function(s){ s.classList.remove('on'); });
+  };
+  pintar();
+})();
 </script>
+<script src="assets/site.js"></script>
 </body>
 </html>
