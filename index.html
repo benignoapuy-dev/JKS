@@ -47,7 +47,7 @@
 .chip .ci{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(242,106,18,.18);color:var(--orange2)}
 .chip .ci svg{width:22px;height:22px}
 .chip.c1{left:-34px;top:14%}
-.chip.c2{right:-26px;top:52%;animation-delay:-2s}
+.chip.c2{right:-26px;bottom:-26px;animation-delay:-2s}
 .chip.c3{left:-18px;bottom:8%;animation-delay:-4s}
 .chip.c2 .ci{background:rgba(61,123,255,.2);color:#8fb0ff}
 @keyframes float{50%{transform:translateY(-10px)}}
@@ -184,7 +184,7 @@
 @media(max-width:640px){
   .hero{padding-top:100px}
   .scroll-cue{display:none}
-  .chip.c1{left:-12px}.chip.c2{right:-12px}.chip.c3{left:-8px}
+  .chip.c1{left:-12px;top:24%}.chip.c2{right:-12px;top:-20px;bottom:auto}.chip.c3{left:-8px}
   .chip{padding:8px 11px}
   .stats-in{grid-template-columns:1fr 1fr}
   .stat{border-bottom:1px solid var(--line)}
