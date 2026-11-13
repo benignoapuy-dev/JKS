@@ -175,7 +175,9 @@ function pintar() {
   const orden = ORDEN_LINEAS.filter(l => grupos[l]);
   if (!orden.length) { $('lista').innerHTML = '<div class="msg">No hay productos que coincidan con la búsqueda.</div>'; return; }
   $('lista').innerHTML = orden.map(l => {
-    const filas = grupos[l].sort((a, b) => a[1].localeCompare(b[1], 'es')).map(([c, n, q]) => {
+    // Tolsen se ordena por código; las demás líneas por nombre
+    const porCodigo = l === 'Herramientas Tolsen';
+    const filas = grupos[l].sort((a, b) => porCodigo ? a[0].localeCompare(b[0], 'es', { numeric: true }) : a[1].localeCompare(b[1], 'es')).map(([c, n, q]) => {
       const cl = q <= 0 ? '' : q < 50 ? 'low' : 'ok';
       const cant = q <= 0 ? '<span class="pill0">Agotado</span>' : '<span class="' + cl + '">' + fmt(q) + '</span>';
       return '<tr><td class="code">' + esc(c) + '</td><td>' + esc(n) + '</td><td class="qty">' + cant + '</td></tr>';
