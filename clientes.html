@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de Clientes — Importaciones Venecia</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#060b1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=2">
+<style>
+.page{padding:110px 0 4rem;min-height:100vh}
+.hidden{display:none!important}
+/* Login */
+.login-wrap{min-height:calc(100vh - 180px);display:grid;place-items:center}
+.login{width:100%;max-width:420px;background:linear-gradient(180deg,#121e42,#0c1530);border:1px solid rgba(242,106,18,.3);border-radius:20px;padding:2.4rem 2rem}
+.login h1{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:800;line-height:1}
+.login p.sub{color:var(--muted);font-size:14.5px;margin:.5rem 0 1.6rem}
+.login .btn{width:100%;justify-content:center;margin-top:.4rem}
+.link{background:none;border:0;color:var(--orange2);font:inherit;font-size:13.5px;cursor:pointer;margin-top:1rem;text-decoration:underline}
+.lock{width:52px;height:52px;border-radius:14px;background:rgba(242,106,18,.14);color:var(--orange2);display:grid;place-items:center;margin-bottom:1.2rem}
+.lock svg{width:28px;height:28px}
+/* Portal */
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.top h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;line-height:.95}
+.top h1 em{font-style:normal;color:var(--orange)}
+.meta{color:var(--muted);font-size:14px;margin-top:.5rem}
+.meta b{color:var(--cream);font-weight:600}
+.who{display:flex;align-items:center;gap:.8rem;font-size:14px;color:var(--muted)}
+.bar{position:sticky;top:70px;z-index:40;background:rgba(6,11,26,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:.9rem 0;border-bottom:1px solid var(--line);margin-bottom:1.4rem;display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+.bar input{flex:1 1 260px;background:#0a1228;border:1px solid rgba(220,228,255,.14);border-radius:999px;padding:11px 18px;color:var(--cream);font:inherit;font-size:15px;outline:none}
+.bar input:focus{border-color:var(--orange)}
+.bar select{background:#0a1228;border:1px solid rgba(220,228,255,.14);border-radius:999px;padding:11px 16px;color:var(--cream);font:inherit;font-size:14px}
+.chk{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);cursor:pointer;user-select:none}
+.chk input{accent-color:var(--orange);width:16px;height:16px}
+.grp{margin-bottom:2rem}
+.grp h2{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;margin-bottom:.7rem;display:flex;align-items:center;gap:.7rem}
+.grp h2 span{font-family:'Barlow',sans-serif;font-size:12.5px;font-weight:600;color:var(--muted);background:rgba(255,255,255,.06);padding:3px 10px;border-radius:999px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:10px 14px;text-align:left;font-size:14.5px;border-bottom:1px solid var(--line)}
+th{font-size:11.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-weight:600;background:#0c1633}
+tr:last-child td{border-bottom:0}
+td.code{font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--muted);white-space:nowrap}
+td.qty{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+th.qty{text-align:right}
+.ok{color:#8fe3b0}.low{color:#ffd27a}.out{color:#ff9a9a}
+.pill0{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.5px;padding:3px 9px;border-radius:999px;background:rgba(255,80,80,.12);border:1px solid rgba(255,80,80,.35);color:#ffb0b0}
+.msg{padding:1.2rem 1.4rem;border-radius:12px;background:var(--card);border:1px solid var(--line);color:var(--muted)}
+@media(max-width:640px){
+  th.code,td.code{display:none}
+  th,td{padding:9px 10px;font-size:13.5px}
+  .bar{top:70px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav solid">
+  <div class="wrap nav-in">
+    <a href="index.html" class="logo" aria-label="Importaciones Venecia inicio">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 20V11a7 7 0 0 1 7-7h9"/><path d="M14 14h6"/></svg></span>
+      <span class="logo-txt"><small>Importaciones</small>VENECIA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="catalogo.html">Catálogo</a></li>
+      <li><a href="clientes.html" class="active">Clientes</a></li>
+      <li><a href="#" class="btn btn-g btn-sm hidden" id="btnSalir">Salir</a></li>
+    </ul>
+    <button class="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="page">
+  <div class="wrap">
+
+    <!-- Cargando -->
+    <div id="vCargando" class="login-wrap"><p class="meta">Cargando…</p></div>
+
+    <!-- Inicio de sesión -->
+    <div id="vLogin" class="login-wrap hidden">
+      <form class="login" id="fLogin">
+        <div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <h1>Portal de clientes</h1>
+        <p class="sub">Consulte el inventario disponible. Acceso solo para clientes autorizados.</p>
+        <div class="fg"><label>Correo</label><input class="fi" type="email" id="lEmail" required autocomplete="username"></div>
+        <div class="fg"><label>Contraseña</label><input class="fi" type="password" id="lPass" required autocomplete="current-password"></div>
+        <button class="btn btn-o" type="submit">Entrar</button>
+        <button class="link" type="button" id="btnOlvido">¿Olvidó su contraseña o es su primer ingreso?</button>
+        <div class="fmsg" id="lMsg"></div>
+      </form>
+    </div>
+
+    <!-- Sin acceso -->
+    <div id="vSinAcceso" class="login-wrap hidden">
+      <div class="login">
+        <h1>Sin acceso</h1>
+        <p class="sub">Su cuenta todavía no está autorizada para ver el inventario. Escríbanos a contacto@jkscr.com para activarla.</p>
+        <button class="btn btn-g" id="btnSalir2">Salir</button>
+      </div>
+    </div>
+
+    <!-- Inventario -->
+    <div id="vPortal" class="hidden">
+      <div class="top">
+        <div>
+          <div class="eyebrow">Portal de clientes</div>
+          <h1>Inventario <em>disponible</em></h1>
+          <div class="meta" id="pMeta"></div>
+        </div>
+        <div class="who" id="pWho"></div>
+      </div>
+      <div class="bar">
+        <input type="search" id="q" placeholder="Buscar por nombre o código: codo 1/2, TL4, conduit…" autocomplete="off">
+        <select id="fLinea"><option value="">Todas las líneas</option></select>
+        <label class="chk"><input type="checkbox" id="soloStock" checked> Solo con existencia</label>
+      </div>
+      <div id="lista"></div>
+    </div>
+
+  </div>
+</main>
+
+<script type="module">
+import { auth, db, linea, ORDEN_LINEAS } from './assets/fb.js';
+import { onAuthStateChanged, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+const $ = id => document.getElementById(id);
+const vistas = ['vCargando','vLogin','vSinAcceso','vPortal'];
+const ver = v => { vistas.forEach(x => $(x).classList.toggle('hidden', x !== v)); $('btnSalir').classList.toggle('hidden', !(v === 'vPortal' || v === 'vSinAcceso')); };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+const fmt = n => new Intl.NumberFormat('es-CR').format(n);
+const msg = (t, ok) => { const m = $('lMsg'); m.className = 'fmsg ' + (ok ? 'ok' : 'err'); m.textContent = t; };
+
+let items = [];
+
+onAuthStateChanged(auth, async user => {
+  if (!user) { ver('vLogin'); return; }
+  try {
+    const correo = (user.email || '').toLowerCase();
+    const ficha = await getDoc(doc(db, 'clientes', correo)).catch(() => null);
+    const snap = await getDoc(doc(db, 'stock', 'actual'));
+    const data = snap.exists() ? snap.data() : null;
+    items = data && data.items ? JSON.parse(data.items) : [];
+    const nombre = ficha && ficha.exists() ? (ficha.data().nombre || correo) : correo;
+    $('pWho').textContent = nombre;
+    const fecha = data && data.actualizado ? data.actualizado.toDate() : null;
+    $('pMeta').innerHTML = fecha
+      ? 'Actualizado: <b>' + fecha.toLocaleString('es-CR', { dateStyle: 'full', timeStyle: 'short' }) + '</b> · ' + fmt(items.length) + ' productos'
+      : 'Aún no hay inventario cargado.';
+    const lineas = ORDEN_LINEAS.filter(l => items.some(i => linea(i[1]) === l));
+    $('fLinea').innerHTML = '<option value="">Todas las líneas</option>' + lineas.map(l => '<option>' + esc(l) + '</option>').join('');
+    pintar();
+    ver('vPortal');
+  } catch (e) {
+    ver('vSinAcceso');
+  }
+});
+
+function pintar() {
+  const t = norm($('q').value.trim()), fl = $('fLinea').value, solo = $('soloStock').checked;
+  const palabras = t ? t.split(/\s+/) : [];
+  const grupos = {};
+  for (const [c, n, q] of items) {
+    const l = linea(n);
+    if (fl && l !== fl) continue;
+    if (solo && !(q > 0)) continue;
+    if (palabras.length) { const h = norm(c + ' ' + n); if (!palabras.every(w => h.includes(w))) continue; }
+    (grupos[l] = grupos[l] || []).push([c, n, q]);
+  }
+  const orden = ORDEN_LINEAS.filter(l => grupos[l]);
+  if (!orden.length) { $('lista').innerHTML = '<div class="msg">No hay productos que coincidan con la búsqueda.</div>'; return; }
+  $('lista').innerHTML = orden.map(l => {
+    const filas = grupos[l].sort((a, b) => a[1].localeCompare(b[1], 'es')).map(([c, n, q]) => {
+      const cl = q <= 0 ? '' : q < 50 ? 'low' : 'ok';
+      const cant = q <= 0 ? '<span class="pill0">Agotado</span>' : '<span class="' + cl + '">' + fmt(q) + '</span>';
+      return '<tr><td class="code">' + esc(c) + '</td><td>' + esc(n) + '</td><td class="qty">' + cant + '</td></tr>';
+    }).join('');
+    return '<section class="grp"><h2>' + esc(l) + ' <span>' + grupos[l].length + '</span></h2><table><thead><tr><th class="code">Código</th><th>Producto</th><th class="qty">Disponible</th></tr></thead><tbody>' + filas + '</tbody></table></section>';
+  }).join('');
+}
+['q','fLinea','soloStock'].forEach(id => $(id).addEventListener('input', pintar));
+
+$('fLogin').addEventListener('submit', async e => {
+  e.preventDefault();
+  try { await signInWithEmailAndPassword(auth, $('lEmail').value.trim(), $('lPass').value); }
+  catch (err) { msg('Correo o contraseña incorrectos.'); }
+});
+$('btnOlvido').addEventListener('click', async () => {
+  const em = $('lEmail').value.trim();
+  if (!em) { msg('Escriba su correo arriba y vuelva a tocar este enlace.'); return; }
+  try { await sendPasswordResetEmail(auth, em); msg('Si su correo está autorizado, le enviamos un enlace para crear su contraseña. Revise también la carpeta de spam.', true); }
+  catch (err) { msg('Si su correo está autorizado, le enviamos un enlace para crear su contraseña.', true); }
+});
+const salir = e => { e && e.preventDefault(); signOut(auth); };
+$('btnSalir').addEventListener('click', salir);
+$('btnSalir2').addEventListener('click', salir);
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>
