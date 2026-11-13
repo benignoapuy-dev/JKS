@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administración — Portal de Clientes</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#060b1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=2">
+<style>
+.page{padding:110px 0 4rem;min-height:100vh}
+.hidden{display:none!important}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(34px,5vw,52px);font-weight:800;line-height:.95}
+h1 em{font-style:normal;color:var(--orange)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.6rem;margin-top:1.4rem}
+.card h2{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;margin-bottom:.3rem}
+.card p.sub{color:var(--muted);font-size:14px;margin-bottom:1.2rem}
+.row{display:grid;grid-template-columns:1.3fr 1fr auto;gap:.8rem;align-items:end}
+.row .btn{height:46px}
+table{width:100%;border-collapse:collapse;margin-top:1.2rem}
+th,td{padding:10px 12px;text-align:left;font-size:14.5px;border-bottom:1px solid var(--line)}
+th{font-size:11.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-weight:600}
+.est{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.est.on{background:rgba(70,200,120,.12);color:#9be8b6;border:1px solid rgba(70,200,120,.4)}
+.est.off{background:rgba(255,80,80,.1);color:#ffb0b0;border:1px solid rgba(255,80,80,.35)}
+.acc{display:flex;gap:.4rem;flex-wrap:wrap}
+.mini{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);color:var(--cream);border-radius:8px;padding:6px 10px;font:inherit;font-size:12.5px;cursor:pointer}
+.mini:hover{border-color:var(--orange)}
+.mini.del:hover{border-color:#ff7b7b;color:#ffb0b0}
+.big{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700}
+.center{min-height:calc(100vh - 200px);display:grid;place-items:center;text-align:center}
+.center .card{max-width:420px}
+@media(max-width:700px){.row{grid-template-columns:1fr}.hide-m{display:none}}
+</style>
+</head>
+<body>
+<header class="nav solid">
+  <div class="wrap nav-in">
+    <a href="index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 20V11a7 7 0 0 1 7-7h9"/><path d="M14 14h6"/></svg></span><span class="logo-txt"><small>Importaciones</small>VENECIA</span></a>
+    <ul class="nav-links">
+      <li><a href="clientes.html">Ver portal</a></li>
+      <li><a href="#" class="btn btn-g btn-sm hidden" id="btnSalir">Salir</a></li>
+    </ul>
+    <button class="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="page"><div class="wrap">
+
+  <div id="vLogin" class="center hidden">
+    <div class="card">
+      <h2>Administración</h2>
+      <p class="sub">Ingrese con la cuenta de Google del administrador.</p>
+      <button class="btn btn-o" id="btnGoogle" style="width:100%;justify-content:center">Entrar con Google</button>
+      <div class="fmsg" id="gMsg"></div>
+    </div>
+  </div>
+
+  <div id="vNo" class="center hidden">
+    <div class="card"><h2>Sin permiso</h2><p class="sub">Esta cuenta no es administradora del portal.</p></div>
+  </div>
+
+  <div id="vAdmin" class="hidden">
+    <div class="eyebrow">Administración</div>
+    <h1>Portal de <em>clientes</em></h1>
+
+    <div class="card">
+      <h2>Inventario</h2>
+      <p class="sub">Se actualiza desde Lucida todos los días a las 9:00 a.m.</p>
+      <div class="big" id="sInfo">—</div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem">
+        <button class="btn btn-o btn-sm" id="btnLucida">Actualizar desde Lucida</button>
+      </div>
+      <div class="fmsg" id="sMsg"></div>
+    </div>
+
+    <div class="card">
+      <h2>Clientes autorizados</h2>
+      <p class="sub">Al agregar un cliente, le llega un correo para crear su contraseña. Puede desactivarlo cuando quiera.</p>
+      <form class="row" id="fNuevo">
+        <div class="fg" style="margin:0"><label>Correo del cliente</label><input class="fi" type="email" id="nEmail" required></div>
+        <div class="fg" style="margin:0"><label>Nombre o empresa</label><input class="fi" id="nNombre" required></div>
+        <button class="btn btn-o btn-sm" type="submit">Agregar</button>
+      </form>
+      <div class="fmsg" id="cMsg"></div>
+      <table>
+        <thead><tr><th>Cliente</th><th class="hide-m">Correo</th><th>Estado</th><th></th></tr></thead>
+        <tbody id="tClientes"><tr><td colspan="4" style="color:var(--muted)">Cargando…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+</div></main>
+
+<script type="module">
+import { app, auth, db, firebaseConfig } from './assets/fb.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut, createUserWithEmailAndPassword, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+const ADMIN = 'benigno.apuy@gmail.com';
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ver = v => { ['vLogin','vNo','vAdmin'].forEach(x => $(x).classList.toggle('hidden', x !== v)); $('btnSalir').classList.toggle('hidden', v === 'vLogin'); };
+const aviso = (id, t, ok) => { const m = $(id); m.className = 'fmsg ' + (ok ? 'ok' : 'err'); m.textContent = t; };
+const fmt = n => new Intl.NumberFormat('es-CR').format(n);
+
+// App secundaria: crea cuentas de clientes sin cerrar la sesión del administrador
+const app2 = initializeApp(firebaseConfig, 'secundaria');
+const auth2 = getAuth(app2);
+
+onAuthStateChanged(auth, async user => {
+  if (!user) { ver('vLogin'); return; }
+  if ((user.email || '').toLowerCase() !== ADMIN) { ver('vNo'); return; }
+  ver('vAdmin');
+  window.__adminListo = true;
+  cargarStock(); cargarClientes();
+});
+
+$('btnGoogle').onclick = async () => {
+  try { await signInWithPopup(auth, new GoogleAuthProvider()); }
+  catch (e) { aviso('gMsg', 'No se pudo iniciar sesión: ' + (e.code || e.message)); }
+};
+$('btnSalir').onclick = e => { e.preventDefault(); signOut(auth); };
+
+// ---------- Inventario ----------
+async function cargarStock() {
+  const s = await getDoc(doc(db, 'stock', 'actual'));
+  if (!s.exists()) { $('sInfo').textContent = 'Todavía no hay inventario cargado'; return; }
+  const d = s.data();
+  $('sInfo').textContent = fmt(d.total || 0) + ' productos · actualizado ' + d.actualizado.toDate().toLocaleString('es-CR', { dateStyle: 'medium', timeStyle: 'short' });
+}
+
+// Guarda el inventario. rows = [[código, nombre, cantidad], ...]
+async function subirStock(rows) {
+  const limpio = rows
+    .map(r => [String(r[0] || '').trim(), String(r[1] || '').replace(/\s+/g, ' ').trim(), Number(r[2]) || 0])
+    .filter(r => r[0] && r[1] && !/^INACTIVO|^MAQUILA|^PLASTICO PALETIZAR/i.test(r[1]));
+  if (limpio.length < 100) throw new Error('Inventario incompleto (' + limpio.length + ' productos); no se guardó.');
+  await setDoc(doc(db, 'stock', 'actual'), { items: JSON.stringify(limpio), total: limpio.length, actualizado: serverTimestamp() });
+  await cargarStock();
+  return limpio.length;
+}
+window.subirStock = subirStock;
+
+// Recibe el inventario desde una pestaña de Lucida abierta desde aquí
+window.addEventListener('message', async ev => {
+  if (ev.origin !== 'https://app.lucida.one' || !ev.data || ev.data.tipo !== 'jks-stock') return;
+  try {
+    const n = await subirStock(ev.data.rows);
+    aviso('sMsg', 'Inventario actualizado: ' + fmt(n) + ' productos.', true);
+    window.__ultimoSync = { ok: true, n, t: Date.now() };
+    ev.source && ev.source.postMessage({ tipo: 'jks-ok', n }, ev.origin);
+  } catch (e) {
+    aviso('sMsg', e.message);
+    window.__ultimoSync = { ok: false, error: e.message, t: Date.now() };
+    ev.source && ev.source.postMessage({ tipo: 'jks-error', error: e.message }, ev.origin);
+  }
+});
+$('btnLucida').onclick = () => {
+  window.__lucida = window.open('https://app.lucida.one/#/billing', 'lucidaSync');
+  aviso('sMsg', 'Se abrió Lucida. El inventario se cargará cuando la pestaña de Lucida lo envíe.', true);
+};
+
+// ---------- Clientes ----------
+async function cargarClientes() {
+  const qs = await getDocs(collection(db, 'clientes'));
+  const filas = [];
+  qs.forEach(d => filas.push({ id: d.id, ...d.data() }));
+  filas.sort((a, b) => (a.nombre || '').localeCompare(b.nombre || '', 'es'));
+  $('tClientes').innerHTML = filas.length ? filas.map(c =>
+    '<tr><td><b>' + esc(c.nombre || '') + '</b><div class="meta" style="font-size:12.5px;color:var(--muted)">' + esc(c.id) + '</div></td>' +
+    '<td class="hide-m">' + esc(c.id) + '</td>' +
+    '<td><span class="est ' + (c.activo ? 'on' : 'off') + '">' + (c.activo ? 'Activo' : 'Inactivo') + '</span></td>' +
+    '<td><div class="acc"><button class="mini" data-t="' + esc(c.id) + '">' + (c.activo ? 'Desactivar' : 'Activar') + '</button>' +
+    '<button class="mini" data-r="' + esc(c.id) + '">Reenviar acceso</button>' +
+    '<button class="mini del" data-d="' + esc(c.id) + '">Quitar</button></div></td></tr>'
+  ).join('') : '<tr><td colspan="4" style="color:var(--muted)">Todavía no hay clientes autorizados.</td></tr>';
+}
+
+$('tClientes').addEventListener('click', async e => {
+  const b = e.target.closest('button'); if (!b) return;
+  try {
+    if (b.dataset.t) {
+      const ref = doc(db, 'clientes', b.dataset.t), s = await getDoc(ref);
+      await updateDoc(ref, { activo: !s.data().activo });
+    } else if (b.dataset.r) {
+      await sendPasswordResetEmail(auth2, b.dataset.r);
+      aviso('cMsg', 'Se envió de nuevo el correo de acceso a ' + b.dataset.r + '.', true);
+    } else if (b.dataset.d) {
+      if (b.dataset.confirm !== '1') { b.dataset.confirm = '1'; b.textContent = '¿Seguro?'; return; }
+      await deleteDoc(doc(db, 'clientes', b.dataset.d));
+      aviso('cMsg', 'Se quitó el acceso a ' + b.dataset.d + '.', true);
+    }
+    cargarClientes();
+  } catch (err) { aviso('cMsg', 'Error: ' + (err.code || err.message)); }
+});
+
+$('fNuevo').addEventListener('submit', async e => {
+  e.preventDefault();
+  const email = $('nEmail').value.trim().toLowerCase(), nombre = $('nNombre').value.trim();
+  try {
+    await setDoc(doc(db, 'clientes', email), { nombre, activo: true, creado: serverTimestamp() });
+    // Crea la cuenta con una contraseña aleatoria que nadie conoce; el cliente define la suya con el correo
+    const r = new Uint8Array(24); crypto.getRandomValues(r);
+    const tmp = Array.from(r, x => x.toString(16).padStart(2, '0')).join('') + 'Aa1!';
+    try { await createUserWithEmailAndPassword(auth2, email, tmp); await signOut(auth2); }
+    catch (err) { if (err.code !== 'auth/email-already-in-use') throw err; }
+    await sendPasswordResetEmail(auth2, email);
+    aviso('cMsg', 'Cliente agregado. Le llegó un correo a ' + email + ' para crear su contraseña.', true);
+    $('fNuevo').reset();
+    cargarClientes();
+  } catch (err) { aviso('cMsg', 'Error: ' + (err.code || err.message)); }
+});
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>
