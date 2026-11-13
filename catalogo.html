@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo de Productos — Importaciones Venecia</title>
-<meta name="description" content="Catálogo Importaciones Venecia: accesorios PVC SCH40, DWV, CPVC, Conduit, tubo PVC y canoas. Arme su lista y solicite cotización.">
+<meta name="description" content="Catálogo Importaciones Venecia: accesorios PVC SCH40, DWV, CPVC, Conduit, tubo PVC y canoas. Consulte las medidas disponibles.">
 <meta name="theme-color" content="#060b1a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +57,9 @@
 .empty{text-align:center;padding:4rem 1rem;color:var(--muted);display:none}
 .empty b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:28px;color:var(--cream);margin-bottom:.3rem}
 
-/* Lista de cotización */
+/* Lista de cotización (desactivada) */
+.fab,.drawer,.drawer-bg{display:none!important}
+.sz{cursor:default;pointer-events:none}
 .fab{position:fixed;right:22px;bottom:22px;z-index:150;display:flex;align-items:center;gap:10px;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:14px 22px;font:inherit;font-weight:600;font-size:14px;letter-spacing:.5px;cursor:pointer;box-shadow:0 16px 40px -10px rgba(242,106,18,.7);transform:translateY(120px);transition:transform .35s cubic-bezier(.2,.8,.2,1.2)}
 .fab.on{transform:none}
 .fab svg{width:20px;height:20px}
@@ -117,9 +119,8 @@
 <section class="c-hero">
   <div class="wrap">
     <div class="eyebrow reveal">Catálogo de productos</div>
-    <h1 class="reveal d1">Encuentre la pieza.<br><em>Arme su lista.</em></h1>
-    <p class="lead reveal d2">Accesorios y tubería PVC, CPVC, Conduit y canoas. Toque las medidas que necesita para agregarlas a su lista y envíela para recibir su cotización.</p>
-    <div class="how reveal d3"><span><b>1</b>Toque una medida</span><span><b>2</b>Revise su lista</span><span><b>3</b>Solicite cotización</span></div>
+    <h1 class="reveal d1">Encuentre la <em>pieza</em><br>que necesita.</h1>
+    <p class="lead reveal d2">Accesorios y tubería PVC, CPVC, Conduit y canoas. Busque por nombre o filtre por línea para ver las medidas de cada pieza.</p>
   </div>
 </section>
 
@@ -159,10 +160,10 @@
     <div class="foot">
       <div><a href="index.html" class="logo"><span class="logo-txt"><small>Importaciones</small>VENECIA</span></a>
         <p>Importadores y distribuidores de accesorios y tubería PVC, CPVC, Conduit y artículos ferreteros para todo Costa Rica.</p></div>
-      <div><h4>Navegación</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="index.html#nosotros">Nosotros</a></li><li><a href="#" data-cotizar>Cotizar</a></li></ul></div>
+      <div><h4>Navegación</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="index.html#nosotros">Nosotros</a></li></ul></div>
       <div><h4>Contacto</h4><ul><li><a href="mailto:contacto@jkscr.com">contacto@jkscr.com</a></li><li><a href="#">Costa Rica</a></li></ul></div>
     </div>
-    <div class="copy"><span>© <span id="year">2026</span> Importaciones Venecia SML SRL · Importadores de Artículos Ferreteros</span><span>Consulte disponibilidad y precios por cotización</span></div>
+    <div class="copy"><span>© <span id="year">2026</span> Importaciones Venecia SML SRL · Importadores de Artículos Ferreteros</span><span>Costa Rica</span></div>
   </div>
 </footer>
 
