@@ -134,11 +134,17 @@ async function cargarStock() {
   $('sInfo').textContent = fmt(d.total || 0) + ' productos · actualizado ' + d.actualizado.toDate().toLocaleString('es-CR', { dateStyle: 'medium', timeStyle: 'short' });
 }
 
+// Productos que no se muestran en el portal (códigos de Lucida)
+const OCULTOS = new Set(['BL-12','BL-15','BS-34','BS-35','CS-22','CS-12','LL-36','MA-112','MA-122','MA-132','PLPR-12','PLR-18','REGLE',
+  'RE-AR-BS13','RE-AR-BS31','RE-AR-BS35','RE-CU-CD11','RE-CU-CD22','RE-CU-CS12','RE-CU-CS22',
+  'RE-EM-BS13','RE-EM-BS31','RE-EM-BS34','RE-EM-BS35','RE-EM-CD11','RE-EM-CD13','RE-EM-CD22','RE-EM-CS22',
+  'RE-MA-BS31','RE-MA-BS34','RE-MA-BS35','RE-MA-CD11','RE-MA-CD13','RE-MA-CD22','RE-MA-CS22','TLP-18']);
+
 // Guarda el inventario. rows = [[código, nombre, cantidad], ...]
 async function subirStock(rows) {
   const limpio = rows
     .map(r => [String(r[0] || '').trim(), String(r[1] || '').replace(/\s+/g, ' ').trim(), Number(r[2]) || 0])
-    .filter(r => r[0] && r[1] && !/^INACTIVO|^MAQUILA|^PLASTICO PALETIZAR/i.test(r[1]));
+    .filter(r => r[0] && r[1] && !OCULTOS.has(r[0].toUpperCase()) && !/^INACTIVO|^MAQUILA|^PLASTICO PALETIZAR/i.test(r[1]));
   if (limpio.length < 100) throw new Error('Inventario incompleto (' + limpio.length + ' productos); no se guardó.');
   await setDoc(doc(db, 'stock', 'actual'), { items: JSON.stringify(limpio), total: limpio.length, actualizado: serverTimestamp() });
   await cargarStock();
