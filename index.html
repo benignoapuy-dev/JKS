@@ -242,7 +242,6 @@
       <div class="hero-btns reveal d3">
         <a href="#productos" class="btn btn-o">Ver productos
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#" class="btn btn-g" data-cotizar>Solicitar cotización</a>
       </div>
     </div>
     <div class="hero-media reveal d2">
@@ -355,21 +354,6 @@
   </div>
 </section>
 
-<!-- ============ PROCESO ============ -->
-<section class="sec">
-  <div class="wrap">
-    <div style="text-align:center;margin-bottom:3.5rem">
-      <div class="eyebrow reveal">Cómo trabajamos</div>
-      <h2 class="h2 reveal d1">Simple, rápido y <em>sin vueltas</em>.</h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal"><div class="num">1</div><h4>Envíe su lista</h4><p>Arme su pedido en el catálogo o cuéntenos qué necesita.</p></div>
-      <div class="step reveal d1"><div class="num">2</div><h4>Reciba asesoría</h4><p>Revisamos medidas y sistema, y le enviamos su cotización.</p></div>
-      <div class="step reveal d2"><div class="num">3</div><h4>Entrega a tiempo</h4><p>Coordinamos la entrega en cualquier provincia del país.</p></div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ MARCAS ============ -->
 <section class="sec" style="padding-top:0">
   <div class="wrap">
@@ -387,11 +371,7 @@
   <div class="wrap">
     <div class="cta-box reveal">
       <h2 class="h2">¿Listo para su próximo proyecto?</h2>
-      <p>Cuéntenos qué necesita y le respondemos con una cotización a la medida.</p>
-      <div class="hero-btns" style="justify-content:center">
-        <a href="#" class="btn btn-w" data-cotizar>Solicitar cotización</a>
-        <a href="catalogo.html" class="btn btn-g">Armar mi lista</a>
-      </div>
+      <p>Escríbanos y con gusto le atendemos.</p>
       <div class="contacts">
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg><a href="mailto:contacto@jkscr.com" style="text-decoration:none">contacto@jkscr.com</a></div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.75 7-13a7 7 0 0 0-14 0c0 5.25 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>Costa Rica</div>
@@ -423,7 +403,6 @@
         <ul>
           <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#galeria">Galería</a></li>
-          <li><a href="#" data-cotizar>Cotizar</a></li>
           <li><a href="mailto:contacto@jkscr.com">contacto@jkscr.com</a></li>
         </ul>
       </div>
@@ -486,10 +465,10 @@
       '<div class="lc-body"><h3>'+c.titulo+'</h3><p>'+c.desc+'</p>'+
       '<div class="meta"><span>'+c.piezas.length+' tipos · '+refs+' referencias</span><span class="go">Ver '+arrow+'</span></div></div></a>';
   }).join('');
-  html += '<a class="lc wide reveal d1" href="#" data-cotizar="Herramientas Tolsen: " style="--c:#ffb21a">'+
+  html += '<a class="lc wide reveal d1" href="#contacto" style="--c:#ffb21a">'+
     '<div class="lc-media"><span class="tag">TOLSEN</span><div class="ill">'+IC.herramienta+'</div></div>'+
     '<div class="lc-body"><h3>Herramientas Tolsen</h3><p>Herramientas manuales y eléctricas de calidad profesional para construcción y ferretería.</p>'+
-    '<div class="meta"><span>Consulte disponibilidad</span><span class="go">Cotizar '+arrow+'</span></div></div></a>';
+    '<div class="meta"><span>Consulte disponibilidad</span><span class="go">Contáctenos '+arrow+'</span></div></div></a>';
   document.getElementById('lines').innerHTML = html;
 
   // Contadores animados
